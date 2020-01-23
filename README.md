@@ -12,10 +12,10 @@ Operating Systems     | (COP 4610)
 Compilers             | (COP 4620)
 Software Engineering  | (CEN 4010)
 ```
-   *Note: Internet Programming (COP 4813) is in a different repository*
+   *Note: Computer Networks/Distributed Processes (CNT 4504) is in a different repository*
    *that was forked from my team member [@Pr0Vlad](https://github.com/Abesuden/sockets)*
 
-If you are still a student at UNF, please do not go further then to use my code as a reference.
+* If you are still a student at UNF, please do not go further then to use my code as a reference.
 
 ## Author
 
