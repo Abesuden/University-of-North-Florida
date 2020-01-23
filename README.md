@@ -20,7 +20,8 @@ If you are still a student at UNF, please do not go further then to use my code 
 ## Authors
 
 * **Alexander Besuden** - *Complete Work* - [Abesuden](https://GitHub.com/Abesuden)
+
 See also more about [author](http://AlexanderBesuden.com)
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
