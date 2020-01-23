@@ -17,7 +17,7 @@ Software Engineering  | (CEN 4010)
 
 If you are still a student at UNF, please do not go further then to use my code as a reference.
 
-## Authors
+## Author
 
 * **Alexander Besuden** - *Complete Work* - [Abesuden](https://GitHub.com/Abesuden)
 
