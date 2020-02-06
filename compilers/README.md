@@ -100,7 +100,7 @@ Now it is time to make the table. The first sets will be added first:
 ───┼────┼────┼────┼────
  B |    |    | y  |    
 ```
-#### Add First Set
+#### Add Follow Set
 
 Now it is time to added the follow:
 
