@@ -125,7 +125,7 @@ All empty boxes are **ERROR** conditions
 ───┼────┼────┼────┼────
  S |aBS'| err|BBS'| err
 ───┼────┼────┼────┼────
- S'| ε  | bS'| ε  | ε   <-- notice the ε
+ S'| ε  | bS'| ε  | ε  
 ───┼────┼────┼────┼────
  B | err|    | y  | err
 ```
