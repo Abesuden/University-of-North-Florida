@@ -1,0 +1,404 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.7).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `#!/bin/sh' line above, then type `sh FILE'.
+#
+lock_dir=_sh25951
+# Made on 2020-01-22 15:24 EST by <n00850421@osprey.unfcsd.unf.edu>.
+# Source directory was `/home/21/n00850421/compilers/projects/proj1'.
+#
+# Existing files will *not* be overwritten, unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#    858 -rw-r--r-- doc
+#     67 -rw-r--r-- makefile
+#     28 -rwxr--r-- p1
+#   2565 -rwxr--r-- p1.py
+#   2041 -rw-r--r-- typescript
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir ;;
+    esac
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+   test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and'
+  ${echo} 'installing GNU `touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir}
+then : ; else ${echo} 'lock directory '${lock_dir}' exists'
+  exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} 'x - created lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to create lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+# ============= doc ==============
+if test -f 'doc' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING doc (file already exists)'
+else
+${echo} 'x - extracting doc (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'doc' &&
+X -== Project 1 ==-
+X
+Name
+====
+X	p1 [fileName]
+X
+X
+Description
+===========
+X	Lexically analyse a file and produce tokens
+X
+X
+How To Use
+==========
+X	To invoke the lexical analyser, use the command 'p1' and then give an argument for the file you want to analyse (refer to "Input Files Expected").
+X
+X
+Purpose
+=======
+X	This is an implementation of a finite state machine to recognize patterns using regular expressions to make tokens
+X	for the parser in project 2. It reads an input file from the command line and writes lexemes and tokens to the
+X	screen.
+X
+X
+Input Files Expected
+====================	
+X	Command line argument expects a file as the first argument ("p1 fileName")
+X
+X
+Output Created
+==============
+X	Output will be printed to the screen. Later, output will be printed to a file to be passed to project 2's parcer.
+X
+Author
+======
+X	Alexander Besuden [n00850421]
+X
+SHAR_EOF
+  (set 20 20 01 22 15 24 05 'doc'; eval "$shar_touch") &&
+  chmod 0644 'doc'
+if test $? -ne 0
+then ${echo} 'restore of doc failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'doc: MD5 check failed'
+       ) << \SHAR_EOF
+4883b00cf914d588a3ad40063706bd19  doc
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'doc'` -ne 858 && \
+  ${echo} 'restoration warning:  size of doc is not 858'
+  fi
+fi
+# ============= makefile ==============
+if test -f 'makefile' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING makefile (file already exists)'
+else
+${echo} 'x - extracting makefile (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'makefile' &&
+all:
+X	@echo "No makefile necessary, project is written in python."
+SHAR_EOF
+  (set 20 20 01 19 16 39 40 'makefile'; eval "$shar_touch") &&
+  chmod 0644 'makefile'
+if test $? -ne 0
+then ${echo} 'restore of makefile failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'makefile: MD5 check failed'
+       ) << \SHAR_EOF
+430dda61310cfe41983e1263376afab4  makefile
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'makefile'` -ne 67 && \
+  ${echo} 'restoration warning:  size of makefile is not 67'
+  fi
+fi
+# ============= p1 ==============
+if test -f 'p1' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p1 (file already exists)'
+else
+${echo} 'x - extracting p1 (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'p1' &&
+#!/bin/ksh
+X
+python p1.py $1
+SHAR_EOF
+  (set 20 20 01 19 17 12 41 'p1'; eval "$shar_touch") &&
+  chmod 0744 'p1'
+if test $? -ne 0
+then ${echo} 'restore of p1 failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p1: MD5 check failed'
+       ) << \SHAR_EOF
+4f588ea72ecd845197a7fdaef3a541dd  p1
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p1'` -ne 28 && \
+  ${echo} 'restoration warning:  size of p1 is not 28'
+  fi
+fi
+# ============= p1.py ==============
+if test -f 'p1.py' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING p1.py (file already exists)'
+else
+${echo} 'x - extracting p1.py (text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'p1.py' &&
+# Compiler Project 1 - Lexical Analyser
+#	By: Alexander Besuden (n00850421)
+#	Date: 1/19/2020
+#
+#	This program was made to pull out and tokenize keywords, integers and identifiers that follow
+#	the guidlines of the C- language framework. The result of this program will create a text file
+#	that can be passed to a syntax analyser (parser) which is for project 2.
+X
+import sys
+import re
+X
+# define lexical conventions
+keywords = ["else", "if", "int", "return", "void", "while"]
+specialChars = ["+", "-", "*", "/", "<", "<=", ">", ">=", "==", "!=", "=", ";", ",", "(", ")", "[", "]", "{", "}"]
+X
+# variables allowed to change
+## for testing ## developerSpecifiedFile = "test_fn"
+developerSpecifiedFile = sys.argv[1] # enable for turnin
+X
+# variables not allowed to change
+insideMLC = False
+singleLC = False
+prevError = False
+X
+# read in file
+fileRead = open(developerSpecifiedFile, "r")
+X
+# look through each line of code
+for eachFnLine in fileRead:
+X
+X	# display input
+X	if eachFnLine != "\n":
+X		print("Input: " + eachFnLine),
+X
+X	# RegEx
+X	prevError = False
+X	singleLC = False
+X	reExp = re.findall("[0-9]+|[\(]|[\)]|[\[]|[\]]|[\{]|[\}]|[+]|[-]|[=]{2}|!=|<=|>=|[*|/|<|<=|>|>=|;|,|/*|*/]+|[a-zA-Z]+|.", eachFnLine)
+X
+X	# look at each word generated by the regular expression
+X	for word in reExp:
+X
+X		# look for start of multi-line comment
+X		if (len(word) > 1):
+X			if (word[0] == "/") & (word[1] == "*"):
+X				insideMLC = True
+X			if (word[0] == "/") & (word[1] == "/"):
+X				singleLC = True
+X		# ignore anything in the middle of a multi-line comment
+X		if insideMLC == True:
+X			1*2
+X		else:
+X
+X			# ignore spaces and reset error
+X			if word == " ":
+X				if prevError:
+X					print("")
+X				prevError = False
+X				continue
+X			# ignore single line comments
+X			if singleLC:
+X				continue
+X
+X			# any word that follows an error, include in the error
+X                        elif (prevError == True) & (word.isalpha() | word.isdigit()):
+X				print(word)
+X				prevError = False
+X
+X			# create tokens
+X			elif word in keywords:
+X				print("KW: " + word)
+X			elif word in specialChars:
+X				print(word)
+X			elif word.isdigit():
+X				print("INT: " + word)
+X			elif word.isalpha():
+X				print("ID: " + word)
+X			elif word == "*/":		# special outlire case
+X				print("*")
+X				print("/")
+X			elif prevError == True:
+X				print("")
+X				print("Error: " + word),
+X			else:
+X				print("Error: " + word),
+X				prevError = True
+X
+X		# find end of multi-line comment
+X                if  (len(word) > 1):
+X			if (word[len(word)-2] == "*") & (word[len(word)-1] == "/"):
+X				insideMLC = False
+X
+X	# add space before the "Input: " feild
+X	print("")
+SHAR_EOF
+  (set 20 20 01 19 16 52 27 'p1.py'; eval "$shar_touch") &&
+  chmod 0744 'p1.py'
+if test $? -ne 0
+then ${echo} 'restore of p1.py failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'p1.py: MD5 check failed'
+       ) << \SHAR_EOF
+dd17999cd1b2194109a0dcdbb45c76e7  p1.py
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'p1.py'` -ne 2565 && \
+  ${echo} 'restoration warning:  size of p1.py is not 2565'
+  fi
+fi
+# ============= typescript ==============
+if test -f 'typescript' && test "$first_param" != -c; then
+  ${echo} 'x -SKIPPING typescript (file already exists)'
+else
+${echo} 'x - extracting typescript (binary)'
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 typescript
+M4V-R:7!T('-T87)T960@;VX@5'5E($IA;B`R,2`R,CHQ,#HS-"`R,#(P"AM=
+M,#MN,#`X-3`T,C%`;W-P<F5Y.GXO8V]M<&EL97)S+W!R;VIE8W1S+W!R;VHQ
+M+W1E;7`'&UL_,3`S-&A;;C`P.#4P-#(Q0&]S<')E>2!T96UP720@<V@@;W5T
+M9FP@#0IX("T@8W)E871E9"!L;V-K(&1I<F5C=&]R>2!@7W-H,C(P,3,G+@T*
+M>"`M(&5X=')A8W1I;F<@9&]C("AT97AT*0T*>"`M(&5X=')A8W1I;F<@;6%K
+M969I;&4@*'1E>'0I#0IX("T@97AT<F%C=&EN9R!P,2`H=&5X="D-"G@@+2!E
+M>'1R86-T:6YG('`Q+G!Y("AT97AT*0T*>"`M(')E;6]V960@;&]C:R!D:7)E
+M8W1O<GD@8%]S:#(R,#$S)RX-"AM=,#MN,#`X-3`T,C%`;W-P<F5Y.GXO8V]M
+M<&EL97)S+W!R;VIE8W1S+W!R;VHQ+W1E;7`'6VXP,#@U,#0R,4!O<W!R97D@
+M=&5M<%TD(&QS#0ID;V,@(&UA:V5F:6QE("!O=71F;"`@&ULP;1M;,S@[-3LS
+M-&UP,1M;,&T@(!M;,S@[-3LS-&UP,2YP>1M;,&T@('1Y<&5S8W)I<'0-"AM;
+M;1M=,#MN,#`X-3`T,C%`;W-P<F5Y.GXO8V]M<&EL97)S+W!R;VIE8W1S+W!R
+M;VHQ+W1E;7`'6VXP,#@U,#0R,4!O<W!R97D@=&5M<%TD(&UA:V4-"DYO(&UA
+M:V5F:6QE(&YE8V5S<V%R>2P@<')O:F5C="!I<R!W<FET=&5N(&EN('!Y=&AO
+M;BX-"AM=,#MN,#`X-3`T,C%`;W-P<F5Y.GXO8V]M<&EL97)S+W!R;VIE8W1S
+M+W!R;VHQ+W1E;7`'6VXP,#@U,#0R,4!O<W!R97D@=&5M<%TD('`Q(&9N#0I4
+M<F%C96)A8VL@*&UO<W0@<F5C96YT(&-A;&P@;&%S="DZ#0H@($9I;&4@(G`Q
+M+G!Y(BP@;&EN92`R-BP@:6X@/&UO9'5L93X-"B`@("!F:6QE4F5A9"`](&]P
+M96XH9&5V96QO<&5R4W!E8VEF:65D1FEL92P@(G(B*0T*24]%<G)O<CH@6T5R
+M<FYO(#)=($YO('-U8V@@9FEL92!O<B!D:7)E8W1O<GDZ("=F;B<-"AM=,#MN
+M,#`X-3`T,C%`;W-P<F5Y.GXO8V]M<&EL97)S+W!R;VIE8W1S+W!R;VHQ+W1E
+M;7`'6VXP,#@U,#0R,4!O<W!R97D@=&5M<%TD(&-P("XN9FX((`@((`@O9FX@
+M+@T*&UTP.VXP,#@U,#0R,4!O<W!R97DZ?B]C;VUP:6QE<G,O<')O:F5C=',O
+M<')O:C$O=&5M<`=;;C`P.#4P-#(Q0&]S<')E>2!T96UP720@8W`@+BXO9FX@
+M+@@("`@("`@("`@;6S50<#$@9FX-"DEN<'5T.B`O*BHJ*E1H:7,J*BHJ*BHJ
+M*BHJ+PT*#0I);G!U=#H@+RHJ*BHJ*BHJ*BHJ*BHJ+PT*#0I);G!U=#H@+RHJ
+M*BHJ*BHJ*BHJ*BHJ*BHJ*BHJ*BHJ*BH-"@T*26YP=70Z(&D@/2`S,S,[("`@
+M("`@("`J*BHJ*BHJ*BHJ*BHJ*BHJ*BHO("`@("`@("HO#0HJ#0HO#0H-"@T*
+M26YP=70Z(&EI:6D@/2`S0#,S.PT*240Z(&EI:6D-"CT-"DE.5#H@,PT*17)R
+M;W(Z($`@,S,-"CL-"@T*#0I);G!U=#H@:6YT(&<@-"!C9"`H:6YT('4L(&EN
+M="!V*2`@("`@('L-"DM7.B!I;G0-"DE$.B!G#0I)3E0Z(#0-"DE$.B!C9`T*
+M*`T*2U<Z(&EN=`T*240Z('4-"BP-"DM7.B!I;G0-"DE$.B!V#0HI#0I[#0H-
+M"DEN<'5T.B!I9BAV(#T](#X](#`I(')E='5R;B\J82!C;VUM96YT*B\@=3L-
+M"DM7.B!I9@T**`T*240Z('8-"CT]#0H^/0T*24Y4.B`P#0HI#0I+5SH@<F5T
+M=7)N#0I)1#H@=0T*.PT*#0I);G!U=#H@96QS92!R971?=7)N(&=C9"AV>'AX
+M>'AX=G9V=G8L('4M=2]V*G8I.PT*2U<Z(&5L<V4-"DE$.B!R970-"D5R<F]R
+M.B!?('5R;@T*240Z(&=C9`T**`T*240Z('9X>'AX>'AV=G9V=@T*+`T*240Z
+M('4-"BT-"DE$.B!U#0HO#0I)1#H@=@T**@T*240Z('8-"BD-"CL-"@T*26YP
+M=70Z("`@("`@("`O*B!U+74O=BIV(#T]('4@;6]D('8J+PT*#0I);G!U=#H@
+M(0T*17)R;W(Z("$@#0I);G!U=#H@?0T*?0T*#0H-"DEN<'5T.B!R971U<FX@
+M=F]I9"!W:&EL92`@("`@("!V;VED(&UA:6XH*0T*2U<Z(')E='5R;@T*2U<Z
+M('9O:60-"DM7.B!W:&EL90T*2U<Z('9O:60-"DE$.B!M86EN#0HH#0HI#0H-
+M"@T*26YP=70Z("$]#0HA/0T*#0H;73`[;C`P.#4P-#(Q0&]S<')E>3I^+V-O
+M;7!I;&5R<R]P<F]J96-T<R]P<F]J,2]T96UP!UMN,#`X-3`T,C%`;W-P<F5Y
+M('1E;7!=)"!E>&ET#0IE>&ET#0H*4V-R:7!T(&1O;F4@;VX@5'5E($IA;B`R
+0,2`R,CHQ,3HR,2`R,#(P"FET
+`
+end
+SHAR_EOF
+  (set 20 20 01 21 22 14 05 'typescript'; eval "$shar_touch") &&
+  chmod 0644 'typescript'
+if test $? -ne 0
+then ${echo} 'restore of typescript failed'
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'typescript: MD5 check failed'
+       ) << \SHAR_EOF
+9b9ea59a3c549aae4f3f93833f8ec1c7  typescript
+SHAR_EOF
+  else
+test `LC_ALL=C wc -c < 'typescript'` -ne 2041 && \
+  ${echo} 'restoration warning:  size of typescript is not 2041'
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} 'x - removed lock directory `'${lock_dir}\''.'
+else ${echo} 'x - failed to remove lock directory `'${lock_dir}\''.'
+  exit 1
+fi
+exit 0
