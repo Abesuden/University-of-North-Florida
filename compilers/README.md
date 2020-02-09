@@ -127,7 +127,7 @@ All empty boxes are **ERROR** conditions
 ───┼────┼────┼────┼────
  S'| ε  | bS'| ε  | ε  
 ───┼────┼────┼────┼────
- B | err|    | y  | err
+ B | err| err| y  | err
 ```
 
 ## **Step Four** [Parser]
