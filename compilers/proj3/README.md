@@ -365,59 +365,78 @@ Digit        [0-9]
 Now, lets find what regular expressions we want to look for. Lets reference the earlier CFG and find the desired tokens (**I have bolded them**). To understand, what qualifies as a token, we need to know the following:
  * keywords in SQL are all UPPERCASE
  * what are the special characters in the CFG (*i.e. '(', '\[', '{', ect.*)
- * are there identifiers
- 
- ```
-start 
-	::= expression
+ * what the identifiers look like, such as numbers
 
-expression
-	::= one-relation-expression | two-relation-expression
+---
 
-one-relation-expression
-	::= renaming | restriction | projection
+`start `
+>   ::= **expression**
 
-renaming 
-	::= term RENAME attribute AS attribute
+`expression`
 
-term 
-	::= relation | ( expression )
+   ::= one-relation-expression | two-relation-expression
 
-restriction
-	::= term WHERE comparison
+`one-relation-expression`
+	
+   ::= renaming | restriction | projection
 
-projection 
-	::= term | term [ attribute-commalist ]
+`renaming `
+	
+   ::= term RENAME attribute AS attribute
 
-attribute-commalist
-	::= attribute | attribute , attribute-commalist
+`term `
+	
+   ::= relation | **(** expression **)**
 
-two-relation-expression
-	::= projection binary-operation expression
+`restriction`
+	
+   ::= term **WHERE** comparison
 
-binary-operation
-	::= UNION | INTERSECT | MINUS | TIMES | JOIN | DIVIDEBY
+`projection `
+	
+   ::= term | term **[** attribute-commalist **]**
 
-comparison
-	::= attribute compare number
+`attribute-commalist`
+	
+   ::= attribute | attribute **,** attribute-commalist
 
-compare
-	::= < | > | <= | >= | = | <>
+`two-relation-expression`
+	
+   ::= projection binary-operation expression
 
-number
-	::= val | val number
+`binary-operation`
+	
+   ::= **UNION** | **INTERSECT** | **MINUS** | **TIMES** | **JOIN** | **DIVIDEBY**
 
-val 
-	::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+`comparison`
+	
+   ::= attribute compare number
 
-attribute 
-	::= CNO | CITY | CNAME | SNO | PNO | TQTY | 
-		  SNAME | QUOTA | PNAME | COST | AVQTY |
-		  S# | STATUS | P# | COLOR | WEIGHT | QTY
+`compare`
+	
+   ::= **<** | **>** | **<=** | **>=** | **=** | **<>**
 
-relation 
-	::= S | P | SP | PRDCT | CUST | ORDERS
- ```
+`number`
+	
+   ::= val | val number
+
+`val `
+	
+   ::= **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9**
+
+`attribute `
+	
+   ::= **CNO** | **CITY** | **CNAME** | **SNO** | **PNO** | **TQTY** | 
+		  
+   **SNAME** | **QUOTA** | **PNAME** | **COST** | **AVQTY** |
+		  
+   **S#** | **STATUS** | **P#** | **COLOR** | **WEIGHT** | **QTY**
+
+`relation `
+   
+   ::= **S** | **P** | **SP** | **PRDCT** | **CUST** | **ORDERS**
+
+---
 
 ## **Step Four** [Make typescript file]
 
