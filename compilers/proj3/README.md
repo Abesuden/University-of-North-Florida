@@ -462,11 +462,57 @@ Delimiter    	[ \t]
 WhiteSpace   	{Delimiter}+
 ```
 
-> Notice how the RE for `Delimiter` finds a single white space, then `Delimiter` is pulled in as a "variable" (i.e. {Delimiter}) for the RE WhiteSpace. The "+" sign is used to say any repeating sequence of the RE `Delimiter`. This is important to know because this concept will be used later.
+> Notice how the RE for `Delimiter` finds a single white space, then `Delimiter` is pulled in as a "variable" `(i.e. {Delimiter})` for the RE `WhiteSpace`. The `"+"` sign is used to signify any repeating sequence of the RE `Delimiter` is considered `WhiteSpace`. The "variable" is important to understand because this concept will be used later.
 
 #### Part Four
 
+Understanding the sections is key to making a functioning LEX. Know that there are three sections, each split by `%%`. To get more information, watch this YouTube video [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
 
+```
+	-== Section One ==-
+%{
+// C language code goes here
+#include "fileName.tab.h"
+extern int yylval;
+void someFunction(); // funciton header
+int numVar; // there is no point to this variable, it is just an example
+%}
+
+// Regular Expressions go here
+Digit        	[0-9]
+Compare 	 	[<>|<=|>=|<|>|=]
+Brackets	 	[\(|\)|,|\[|\]]
+Delimiter    	[ \t]
+WhiteSpace   	{Delimiter}+
+
+%% <--- this is the section delimiter
+
+	-== Section Two ==-
+
+// return the tokens that will be passed
+{Digit}			{return(NUM);}
+ `-----`------------------------> notice the RE "variable" reference
+{Compare}		{return(COM);}
+{Brackets}		{return(BRK);}
+{Delimiter}		{return(DEL);}
+{WhiteSpace}	{return(WHT);}
+"RENAME" 		{return(RENAME);}
+"AS" 			{return(AS);}
+"WHERE" 		{return(WHERE);}
+.               {someFunctionHeader();} 
+
+%% <--- this is the section delimiter
+
+	-== Section Three ==-
+	
+// more C language code goes here
+void someFunctionHeader() {
+	printf("Reject or not to reject, that is the question.\n");
+}
+numVar = 5; // there is no point to this variable, it is just an example
+```
+
+> Notice how the .l file is structured above. In section two, there are many ways to `return` the `tokens`. Choose which ever works best for you. This is in no way the complete .l file, but this is an accurate structure. If you fill in the rest of the REs and the CFGs, then you should have a working .l file to pass to LEX.
 
 ## **Step Three** [Build makefile]
 
