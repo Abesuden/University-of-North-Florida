@@ -301,27 +301,6 @@ yywrap()
 }
 ```
 
-## **Step Three** [Build makefile]
-
-create makefile or find Eggen's example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/makefile)
-
-```
-nano makefile
-```
-
-Type something similar to the following:
-
-```
-postfix: lex.yy.c postfix.tab.c
-        cc postfix.tab.c -o postfix
-
-lex.yy.c: postfix.l
-        flex postfix.l
-
-postfix.tab.c   : postfix.y
-        bison postfix.y
-```
-
 ### Lex
 
 Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
@@ -370,7 +349,7 @@ Now, lets find what regular expressions we want to look for. Lets reference the 
 ---
 
 start 
->   ::= **expression**
+>   ::= expression
 
 expression
 >   ::= one-relation-expression | two-relation-expression
@@ -421,7 +400,8 @@ relation
 
 ---
 
-So we find that we need regular expressions to find:
+So we find that we need to generate regular expressions to find these tokens:
+
  * RENAME
  * AS
  * (
@@ -434,7 +414,7 @@ So we find that we need regular expressions to find:
  * MINUS
  * TIMES
  * JOIN
- * DIVIDBY
+ * DIVIDEBY
  * <
  * \>
  * <=
@@ -466,7 +446,42 @@ So we find that we need regular expressions to find:
  * CUST
  * ORDERS
 
+## **Step Three** [Build makefile]
+
+create makefile or find Eggen's example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/makefile)
+
+```
+nano makefile
+```
+
+Type something similar to the following:
+
+```
+postfix: lex.yy.c postfix.tab.c
+        cc postfix.tab.c -o postfix
+
+lex.yy.c: postfix.l
+        flex postfix.l
+
+postfix.tab.c   : postfix.y
+        bison postfix.y
+```
+
+
 ## **Step Four** [Make typescript file]
+
+A typescript file is used to log what is printed to the terminal. In order to start the typescript, you must be on a linux machine and use the following command:
+
+```
+script
+```
+
+You will now see a typescript file created in yout current directory. The next step is to execute the programs for this project. In order to end the typescript, use the following command:
+
+```
+exit
+```
+
 
 ## **Step Five** [Create documentation]
 
