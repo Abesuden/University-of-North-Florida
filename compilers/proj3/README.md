@@ -1,5 +1,19 @@
 # LEX and YACC (Yet Another Compiler Compiler)
 
+## Table Of Contents
+
+* [Step One [Create Files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-one-create-files)
+	* [Create .l file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-l-file)
+	* [Create .y file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-y-file)
+* [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
+	* [YACC]()
+	* [ds]()
+
+	
+* [sd]()
+	* [ds]()
+		* [sd]()
+
 ## **Step One** [Create Files]
 Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3)
 
@@ -23,9 +37,9 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 
 ## **Step Two** [Build out the files]
 
-### Yacc
+### YACC
 
-Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y)
+Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y). Watch an example with this YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
 
 
 *Given Grammer*
@@ -301,7 +315,7 @@ yywrap()
 }
 ```
 
-### Lex
+### LEX
 
 Using extended **regular expression** format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw). You can also find a good video about **FLEX** [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
 
@@ -513,6 +527,31 @@ numVar = 5; // there is no point to this variable, it is just an example
 ```
 
 > Notice how the .l file is structured above. In section two, there are many ways to `return` the `tokens`. Choose which ever works best for you. This is in no way the complete .l file, but this is an accurate structure. If you fill in the rest of the REs and the CFGs, then you should have a working .l file to pass to LEX.
+
+#### Part Five
+
+Now that the .l file is done, we need to update section one of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Find a reference YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
+
+```
+%{
+#include <stdio.h>
+#include <stdlib.h>
+extern yylex();
+extern yytext[];
+extern FILE *yyin;
+%}
+
+%start start
+%token NUM COM BRK DEL WHT RENAME AS WHERE
+
+%%
+start                       : expression                                {
+                                                                        };
+...
+```
+*Find a reference to what the full .y file should look like in the YACC section [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)*
+
+> Note: this is based off of [Part Four](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-four), which means there are more tokens in the actual project.
 
 ## **Step Three** [Build makefile]
 
