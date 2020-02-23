@@ -7,7 +7,7 @@
 * [Step One [Create Files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-one-create-files)
 	* [Create .l file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-l-file)
 	* [Create .y file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-y-file)
-	* [Create .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file)
+	* [Create .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file)
 * [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
 	* [YACC](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)
 		* [Given grammar](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#given-grammar)
@@ -22,7 +22,7 @@
 		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
 			* [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update)
 			* [Section Two Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-two-update)
-	* [Make .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file-1)
+	* [Make .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-tabc-file)
 * [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
@@ -54,12 +54,12 @@ fileName.y
 ```
 Note: The term "lexum" represents the grammar such as *varName,* and the term token represents the category such as *ID*
 
-#### Create .tab.c file
+#### Create .tab.h file
 
 *This file is used to put the tokens into a symbol table, so that the GDB and other debuggers know about them.*
 
 ```
-fileName.tab.c
+fileName.tab.h
 ```
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
@@ -639,7 +639,7 @@ projection                  : term                                      {
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
-### Make .tab.c file
+### Make .tab.h file
 
 This file is used to put the tokens into the symbol table, so that GDB and other debuggers know about them. You can find Eggen's file reference [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.h). We only care about changing the tokens to look like the following:
 
@@ -875,7 +875,7 @@ cc: no input files
 make: *** [pull.tab.o] Error 1
 ```
 
-> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens and file names. It resolved the issue and I was able to get passed the `.y` file.
+> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens like in this step [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-tabc-file). I also had to find all references to `aa.tab.c` using `ctrl + f`, and replace all to my `fileName.tab.c`. It resolved the issue and I was able to get passed the `.y` file errors.
 
 ---
 
