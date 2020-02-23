@@ -35,6 +35,9 @@ Use extended regular expression format, find a good reference website [here](htt
 
 Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y)
 
+
+*Given Grammer*
+
 ```
 start 
 	::= expression
@@ -88,9 +91,65 @@ relation
 
 ```
 
+*Eggen's Grammer Reference*
+
+```
+%{
+#include <stdio.h>
+#include <stdlib.h>
+extern yylex();
+extern yytext[];
+extern FILE *yyin;
+%}
+%start Program
+%token Id Lt Pl St Mt Di Eq Sm Lp Rp 
+%%
+Program    : Expression Sm          { 
+                                     printf("\nACCEPT\n");
+                                    };
+Expression : Expression Pl Term     {
+                                    };
+           | Expression St Term     {
+                                    };
+           | Term                   { 
+                                    };
+Term       : Term Mt Factor         {
+                                    };
+           | Term Di Factor         {
+                                    };
+           | Factor                 {
+                                    };
+Factor     : Lp Expression Rp       {
+                                    };
+           | Id                     {
+                                    };
+%%
+int main(int argc, char *argv[])
+{
+   yyin = fopen(argv[1], "r");
+   if (!yyin)
+   {
+      printf("no file\n");
+      exit(0);
+   }
+   yyparse();
+}
+yyerror()
+{
+   printf("\nREJECT\n");
+//   printf("error from yyerror\n");
+   exit(0);
+}
+yywrap()
+{
+   printf("in yywarp\n");
+   exit(0);
+}
+```
+
 ## **Step Three** [Build makefile]
 
-create makefile or find Eggan's example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/makefile)
+create makefile or find Eggen's example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/makefile)
 
 ```
 nano makefile
