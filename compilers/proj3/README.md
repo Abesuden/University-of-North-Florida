@@ -618,7 +618,7 @@ projection                  : term                                      {
 
 > Notice that we replace the tokens `'(', ')', '[', ']'` with the RE name. Also, it is good to understand that tokens like `WHERE` are the actual tokens that we passed from the .l file into this .y file via the `%token` assignments we did in [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update). 
 
-`*Yes, SQL is typically all uppercase but that is just a coincidence in this project.*`
+> *Yes, SQL is typically all uppercase but that is just a coincidence in this project.*
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
