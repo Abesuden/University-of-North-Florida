@@ -1,7 +1,7 @@
 # LEX and YACC (Yet Another Compiler Compiler)
 
 ## **Step One** [Create Files]
-Follow the steps below for the given C-- grammer from pages 501-502
+Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3)
 
 #### Create .l file
 
