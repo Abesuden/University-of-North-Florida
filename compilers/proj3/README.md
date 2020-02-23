@@ -341,7 +341,7 @@ Eggen expects some form of documentation that describes what is being turned in
 nano doc
 ```
 
-*inside, make it look like a man page*
+*Make the documentation look like a man page*
 
 ```
  Project 3
