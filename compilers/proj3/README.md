@@ -53,7 +53,6 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 
 Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y). Watch an example with this YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
 
-
 #### *Given Grammer*
 
 ```
@@ -107,6 +106,8 @@ attribute
 relation 
 	::= S | P | SP | PRDCT | CUST | ORDERS
 ```
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 #### *Eggen's Grammer Reference*
 
@@ -163,6 +164,8 @@ yywrap()
    exit(0);
 }
 ```
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 #### *What it should look like when you are done* (don't be stupid... **DO NOT COPY!**)
 
@@ -327,6 +330,8 @@ yywrap()
 }
 ```
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 ### LEX
 
 Using extended **regular expression** format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw). You can also find a good video about **FLEX** [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
@@ -366,6 +371,8 @@ Digit        [0-9]
 \n                            return(0);
 %%
 ```
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 #### Part One
 
@@ -428,6 +435,8 @@ relation
 
 ---
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 #### Part Two
 
 So we find that we need to generate regular expressions to find these tokens:
@@ -476,6 +485,8 @@ So we find that we need to generate regular expressions to find these tokens:
  * CUST
  * ORDERS
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 #### Part Three
 
 Regular expressions do not need to be made for each and every token, you will learn why later. Just know for now, we can make as many regular expressions as we want but we do not need to make regular expressions for all. These are some examples of useful regular expressions:
@@ -489,6 +500,8 @@ WhiteSpace   	{Delimiter}+
 ```
 
 > Notice how the RE for `Delimiter` finds a single white space, then `Delimiter` is pulled in as a "variable" `(i.e. {Delimiter})` for the RE `WhiteSpace`. The `"+"` sign is used to signify any repeating sequence of the RE `Delimiter` is considered `WhiteSpace`. The "variable" is important to understand because this concept will be used later.
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 #### Part Four
 
@@ -540,6 +553,8 @@ numVar = 5; // there is no point to this variable, it is just an example
 
 > Notice how the .l file is structured above. In section two, there are many ways to `return` the `tokens`. Choose which ever works best for you. This is in no way the complete .l file, but this is an accurate structure. If you fill in the rest of the REs and the CFGs, then you should have a working .l file to pass to LEX.
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 #### Part Five
 
 Now that the .l file is done, we need to update section one of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Find a reference YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
@@ -565,6 +580,8 @@ start                       : expression                                {
 
 > Note: this is based off of [Part Four](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-four), which means there are more tokens in the actual project.
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 ## **Step Three** [Build makefile]
 
 create makefile or find Eggen's example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/makefile)
@@ -586,6 +603,7 @@ postfix.tab.c   : postfix.y
         bison postfix.y
 ```
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 ## **Step Four** [Make typescript file]
 
@@ -601,6 +619,7 @@ You will now see a typescript file created in yout current directory. The next s
 exit
 ```
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
 ## **Step Five** [Create documentation]
 
@@ -649,6 +668,8 @@ Author
         firstName lastName [n00000000]
 ```
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 ## **Final Step** [Turn in on osprey]
 
 You will need to shar the files to compress them
@@ -664,3 +685,5 @@ turnin outfl ree4620_3   // final step to turn in project
 turnin -c ree4620_3 	 // used to check and make sure it was turned in
 ls -l outFile  	       	 // see that the file size turned in agrees with the local file size
 ```
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
