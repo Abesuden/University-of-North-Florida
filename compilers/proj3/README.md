@@ -47,6 +47,8 @@ fileName.y
 
 Note: The term "lexum" represents the grammer such as *varName,* and the term token represents the catagory such as *ID*
 
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
 ## **Step Two** [Build out the files]
 
 ### YACC
@@ -181,7 +183,7 @@ extern FILE *yyin;
 %token Id Lt Pl St Mt Di Eq Sm Lp Rp 
 %%
 start                       : expression                                {
-                                                                        };
+							printf("ACCEPT\n");                         };
 expression                  : one-relation-expression                   {
                                                                         };
                             | two-relation-expression                   {
@@ -557,7 +559,9 @@ numVar = 5; // there is no point to this variable, it is just an example
 
 #### Part Five
 
-Now that the .l file is done, we need to update section one of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Find a reference YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
+Now that the .l file is done, we need to update section one and two of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Section two needs the tokens to be updated. Find a reference YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
+
+##### Section One Update
 
 ```
 %{
@@ -569,7 +573,7 @@ extern FILE *yyin;
 %}
 
 %start start
-%token NUM COM BRK DEL WHT RENAME AS WHERE
+%token NUM COM BRK DEL WHT RENAME AS WHERE <---- update this line
 
 %%
 start                       : expression                                {
@@ -579,6 +583,38 @@ start                       : expression                                {
 *Find a reference to what the full .y file should look like in the YACC section [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)*
 
 > Note: this is based off of [Part Four](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-four), which means there are more tokens in the actual project.
+
+##### Section Two Update
+
+`old section two`
+
+```
+term                        : relation                                  {
+                                                                        };
+                            | ( expression )		                    {
+                                                                        };
+restriction                 : term WHERE comparison                     {
+                                                                        };
+projection                  : term                                      {
+                                                                        };
+                            | term [ attribute-commalist ]              {
+```
+
+`revised section two`
+
+```
+term                        : relation                                  {
+                                                                        };
+                            | LPAR expression RPAR                      {
+                                                                        };
+restriction                 : term WHERE comparison                     {
+                                                                        };
+projection                  : term                                      {
+                                                                        };
+                            | term LSQR attribute-commalist RSQR        {
+```
+
+> Notice that we replace the tokens `'(', ')', '[', ']'` with the RE name. Also, it is good to understand that tokens like `WHERE` are the actual tokens that we passed from the .l file into this .y file via the `%token` assignments we did in [Section One Update]().
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
