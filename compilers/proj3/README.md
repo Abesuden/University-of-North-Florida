@@ -19,6 +19,8 @@
 		* [Part Three](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-three)
 		* [Part Four](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-four)
 		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
+			* [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update)
+			* [Section Two Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-two-update)
 * [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
@@ -614,7 +616,9 @@ projection                  : term                                      {
                             | term LSQR attribute-commalist RSQR        {
 ```
 
-> Notice that we replace the tokens `'(', ')', '[', ']'` with the RE name. Also, it is good to understand that tokens like `WHERE` are the actual tokens that we passed from the .l file into this .y file via the `%token` assignments we did in [Section One Update]().
+> Notice that we replace the tokens `'(', ')', '[', ']'` with the RE name. Also, it is good to understand that tokens like `WHERE` are the actual tokens that we passed from the .l file into this .y file via the `%token` assignments we did in [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update). 
+
+`*Yes, SQL is typically all uppercase but that is just a coincidence in this project.*`
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
