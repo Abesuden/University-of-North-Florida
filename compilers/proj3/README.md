@@ -303,7 +303,7 @@ yywrap()
 
 ### Lex
 
-Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
+Using extended **regular expression** format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw). You can also find a good video about **FLEX** [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
 
 #### Lets begin
 
@@ -341,10 +341,12 @@ Digit        [0-9]
 %%
 ```
 
-Now, lets find what regular expressions we want to look for. Lets reference the earlier CFG and find the desired tokens (**I have bolded them**). To understand, what qualifies as a token, we need to know the following:
+#### Part One
+
+Now, lets find what regular expressions we want LEX to look for. Lets reference the [earlier CFG](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc) and find the desired tokens (**I have bolded them so that they stand out more**). To understand, what qualifies as a token, we need to know the following:
  * keywords in SQL are all UPPERCASE
- * what are the special characters in the CFG (*i.e. '(', '\[', '{', ect.*)
- * what the identifiers look like, such as numbers
+ * special characters in the CFG (*i.e. '(', '\[', '{', ect.*)
+ * identifiers such as numbers
 
 ---
 
@@ -400,6 +402,8 @@ relation
 
 ---
 
+#### Part Two
+
 So we find that we need to generate regular expressions to find these tokens:
 
  * RENAME
@@ -445,6 +449,24 @@ So we find that we need to generate regular expressions to find these tokens:
  * PRDCT
  * CUST
  * ORDERS
+
+#### Part Three
+
+Regular expressions do not need to be made for each and every token, you will learn why later. Just know for now, we can make as many regular expressions as we want but we do not need to make regular expressions for all. These are some examples of useful regular expressions:
+
+```
+Digit        	[0-9]
+Compare 	 	[<>|<=|>=|<|>|=]
+Brackets	 	[\(|\)|,|\[|\]]
+Delimiter    	[ \t]
+WhiteSpace   	{Delimiter}+
+```
+
+> Notice how the RE for `Delimiter` finds a single white space, then `Delimiter` is pulled in as a "variable" (i.e. {Delimiter}) for the RE WhiteSpace. The "+" sign is used to say any repeating sequence of the RE `Delimiter`. This is important to know because this concept will be used later.
+
+#### Part Four
+
+
 
 ## **Step Three** [Build makefile]
 
