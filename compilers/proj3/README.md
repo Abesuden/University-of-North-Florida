@@ -392,5 +392,6 @@ Turn the compressed file into Eggen
 
 ```
 turnin outfl ree4620_3   // final step to turn in project
-turnin -c ree4620_3 	 // used to check and make sure it was turned in                                                                                                                                      ls -l outFile  	       // see that the file size turned in agrees with the local file size    
+turnin -c ree4620_3 	 // used to check and make sure it was turned in
+ls -l outFile  	       	 // see that the file size turned in agrees with the local file size
 ```
