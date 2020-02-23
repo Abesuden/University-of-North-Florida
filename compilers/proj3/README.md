@@ -7,6 +7,7 @@
 * [Step One [Create Files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-one-create-files)
 	* [Create .l file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-l-file)
 	* [Create .y file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-y-file)
+	* [Create .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file)
 * [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
 	* [YACC](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)
 		* [Given Grammer](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#given-grammer)
@@ -630,6 +631,47 @@ projection                  : term                                      {
 > Notice that we replace the tokens `'(', ')', '[', ']'` with the RE name. Also, it is good to understand that tokens like `WHERE` are the actual tokens that we passed from the .l file into this .y file via the `%token` assignments we did in [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update). 
 
 *Yes, SQL is typically all uppercase but that is just a coincidence in this project.*
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
+### Create .tab.c file
+
+This file is used to put the tokens into the symbol table, so that GDB and other debuggers know about them.You can find Eggen's file reference [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.h). We only care about changing the tokens to look like the following:
+
+```
+/* Tokens.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+   /* Put the tokens into the symbol table, so that GDB and other debuggers
+      know about them.  */
+   enum yytokentype {
+       WHITESPACE = 258,
+       LPAR 	  = 259,
+       RPAR 	  = 260,
+       LSQR 	  = 261,
+       RSQR 	  = 262,
+       LRAB 	  = 263,
+	   ...
+       QTY    	  = 296,
+       SP     	  = 297,
+       PRDCT  	  = 298,
+       CUST   	  = 299,
+       ORDERS 	  = 300,
+	   S 	  	  = 301,
+       P 	  	  = 302,
+       DELIMITER  = 303
+   };
+#endif
+
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+typedef int YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
+# define yystype YYSTYPE /* obsolescent; will be withdrawn */
+# define YYSTYPE_IS_DECLARED 1
+#endif
+
+extern YYSTYPE yylval;
+```
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
