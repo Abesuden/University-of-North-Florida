@@ -25,10 +25,40 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 
 #### Lex
 
-Use extended regular expression format, find a good reference website [here](https://regexr.com/) *or* watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
+Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
 
+Reference Eggen's world famous grammer [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
 
-`Reference Eggen's world famous grammer from` [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/)
+```
+%{
+#include "aa.tab.h"
+extern int yylval;
+%}
+Delimiter    [ \t]
+WhiteSpace   {Delimiter}+
+Letter       [A-Za-z]
+Digit        [0-9]
+%%
+{WhiteSpace}                  ;
+{Letter}({Letter}|{Digit})*   return(Id);
+{Digit}+                      {
+                              //printf("%s in lex\n",yytext);
+			      yylval = atoi(yytext);
+                              /* return(yytext); */
+                               return(Lt);   
+                              }
+"+"                           { //printf("%s in lex \n",yytext);
+                                return(Pl);
+                              }
+"-"                           return(St);
+"*"                           return(Mt);
+"/"                           return(Di);
+"="                           return(Eq);
+";"                           return(Sm);
+"("                           return(Lp);
+")"                           return(Rp);
+\n                            return(0);
+```
 
 
 #### Yacc
