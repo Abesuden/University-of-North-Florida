@@ -19,7 +19,7 @@ fileName.l
 fileName.y
 ```
 
-Note: lexum is *main* and token is *ID*
+Note: The term "lexum" represents the grammer such as *varName,* and the term token represents the catagory such as *ID*
 
 ## **Step Two** [Build out the files]
 
@@ -123,6 +123,169 @@ Factor     : Lp Expression Rp       {
                                     };
            | Id                     {
                                     };
+%%
+int main(int argc, char *argv[])
+{
+   yyin = fopen(argv[1], "r");
+   if (!yyin)
+   {
+      printf("no file\n");
+      exit(0);
+   }
+   yyparse();
+}
+yyerror()
+{
+   printf("\nREJECT\n");
+//   printf("error from yyerror\n");
+   exit(0);
+}
+yywrap()
+{
+   printf("in yywarp\n");
+   exit(0);
+}
+```
+
+*What it should look like when you are done* (don't be stupid... **DO NOT COPY!**)
+
+```
+%{
+#include <stdio.h>
+#include <stdlib.h>
+extern yylex();
+extern yytext[];
+extern FILE *yyin;
+%}
+%start start
+%token Id Lt Pl St Mt Di Eq Sm Lp Rp 
+%%
+start                       : expression                                {
+                                                                        };
+expression                  : one-relation-expression                   {
+                                                                        };
+                            | two-relation-expression                   {
+                                                                        };
+one-relation-expression     : renaming                                  {
+                                                                        };
+                            | restriction                               {
+                                                                        };
+                            | projection                                {
+                                                                        };
+renaming                    : term RENAME attribute AS attribute        {
+                                                                        };
+term                        : relation                                  {
+                                                                        };
+                            | ( expression )                            {
+                                                                        };
+restriction                 : term WHERE comparison                     {
+                                                                        };
+projection                  : term                                      {
+                                                                        };
+                            | term [ attribute-commalist ]              {
+                                                                        };
+attribute-commalist         : attribute                                 {
+                                                                        };
+                            | attribute , attribute-commalist           {
+                                                                        };
+two-relation-expression     : projection binary-operation expression    {
+                                                                        };
+binary-operation            : UNION                                     {
+                                                                        };
+                            | INTERSECT                                 {
+                                                                        };
+                            | MINUS                                     {
+                                                                        };
+                            | TIMES                                     {
+                                                                        };
+                            | JOIN                                      {
+                                                                        };
+                            | DIVIDEBY                                  {
+                                                                        };
+comparison                  : attribute compare number                  {
+                                                                        };
+compare                     : <                                         {
+                                                                        };
+                            | >                                         {
+                                                                        };
+                            | <=                                        {
+                                                                        };
+                            | >=                                        {
+                                                                        };
+                            | =                                         {
+                                                                        };
+                            | <>                                        {
+                                                                        };
+number                      : val                                       {
+                                                                        };
+                            | val number                                {
+                                                                        };
+val                         : 0                                         {
+                                                                        };
+                            | 1                                         {
+                                                                        };
+                            | 2                                         {
+                                                                        };
+                            | 3                                         {
+                                                                        };
+                            | 4                                         {
+                                                                        };
+                            | 5                                         {
+                                                                        };
+                            | 6                                         {
+                                                                        };
+                            | 7                                         {
+                                                                        };
+                            | 8                                         {
+                                                                        };
+                            | 9                                         {
+                                                                        };
+attribute                   : CNO                                       {
+                                                                        };
+                            | CITY                                      {
+                                                                        };
+                            | CNAME                                     {
+                                                                        };
+                            | SNO                                       {
+                                                                        };
+                            | PNO                                       {
+                                                                        };
+                            | TQTY                                      {
+                                                                        };
+                            | SNAME                                     {
+                                                                        };
+                            | QUOTA                                     {
+                                                                        };
+                            | PNAME                                     {
+                                                                        };
+                            | COST                                      {
+                                                                        };
+                            | AVQTY                                     {
+                                                                        };
+                            | S#                                        {
+                                                                        };
+                            | STATUS                                    {
+                                                                        };
+                            | P#                                        {
+                                                                        };
+                            | COLOR                                     {
+                                                                        };
+                            | WEIGHT                                    {
+                                                                        };
+                            | QTY                                       {
+                                                                        };
+relation                    : S                                         {
+                                                                        };
+                            | P                                         {
+                                                                        };
+                            | SP                                        {
+                                                                        };
+                            | PRDCT                                     {
+                                                                        };
+                            | CUST                                      {
+                                                                        };
+                            | ORDERS                                    {
+                                                                        };
 %%
 int main(int argc, char *argv[])
 {
