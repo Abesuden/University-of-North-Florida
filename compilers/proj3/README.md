@@ -5,7 +5,7 @@ Follow the steps below for the given C-- grammer from pages 501-502
 
 #### Create .l file
 
-*This file holds the regular expressions to recogonize the patterns from the .y file*
+*This file holds the regular expressions used to recogonize the patterns from the .y file*
 
 ```
 fileName.l
@@ -13,7 +13,7 @@ fileName.l
 
 #### Create .y file
 
-*This file holds the regular expressions to recogonize the patterns from the .y file*
+*This file contains the context free grammer (CFG)*
 
 ```
 fileName.y
