@@ -22,6 +22,7 @@
 		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
 			* [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update)
 			* [Section Two Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-two-update)
+	* [Create .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file-1)
 * [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
@@ -657,8 +658,8 @@ This file is used to put the tokens into the symbol table, so that GDB and other
        PRDCT  	  = 298,
        CUST   	  = 299,
        ORDERS 	  = 300,
-	   S 	  	  = 301,
-       P 	  	  = 302,
+       S          = 301,
+       P          = 302,
        DELIMITER  = 303
    };
 #endif
