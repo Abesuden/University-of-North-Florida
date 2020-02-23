@@ -1,5 +1,7 @@
 # LEX and YACC (Yet Another Compiler Compiler)
 
+---
+
 ## Table Of Contents
 
 * [Step One [Create Files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-one-create-files)
@@ -49,7 +51,7 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y). Watch an example with this YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
 
 
-*Given Grammer*
+#### *Given Grammer*
 
 ```
 start 
@@ -103,7 +105,7 @@ relation
 	::= S | P | SP | PRDCT | CUST | ORDERS
 ```
 
-*Eggen's Grammer Reference*
+#### *Eggen's Grammer Reference*
 
 ```
 %{
@@ -159,7 +161,7 @@ yywrap()
 }
 ```
 
-*What it should look like when you are done* (don't be stupid... **DO NOT COPY!**)
+#### *What it should look like when you are done* (don't be stupid... **DO NOT COPY!**)
 
 ```
 %{
