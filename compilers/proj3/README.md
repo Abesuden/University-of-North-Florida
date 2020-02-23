@@ -6,7 +6,9 @@ Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop
 #### Create .l file
 
 *This file holds the regular expressions used to recogonize the patterns from the .y file*
+
 ═╩
+
 ```
 fileName.l
 ```
