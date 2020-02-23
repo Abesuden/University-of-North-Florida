@@ -27,6 +27,10 @@
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
 * [Final Step [Turn in on osprey]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#final-step-turn-in-on-osprey)
+* [Troubleshooting](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#trouble-shooting)
+	* [make issue [alpha]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-alpha)
+	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
+	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
 
 ---
 
@@ -788,7 +792,9 @@ ls -l outFile  	       	 // see that the file size turned in agrees with the loc
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
-## **Trouble Shooting**
+## **Troubleshooting**
+
+---
 
 #### *make issue [alpha]*
 
@@ -855,6 +861,8 @@ expression                  : oneRelationExpression                     {
                                                                         };
 ```
 
+---
+
 #### *make issue [beta]*
 
 When using the `make` command, this is what my terminal spit out:
@@ -868,6 +876,8 @@ make: *** [pull.tab.o] Error 1
 ```
 
 > I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens and file names. It resolved the issue and I was able to get passed the `.y` file.
+
+---
 
 #### *make issue [theta]*
 
