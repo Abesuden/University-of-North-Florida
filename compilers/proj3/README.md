@@ -10,8 +10,8 @@
 	* [Create .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file)
 * [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
 	* [YACC](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)
-		* [Given Grammer](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#given-grammer)
-		* [Eggen's Grammer](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#eggens-grammer-reference)
+		* [Given grammar](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#given-grammar)
+		* [Eggen's grammar](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#eggens-grammar-reference)
 		* [End Result](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#what-it-should-look-like-when-you-are-done-dont-be-stupid-do-not-copy)
 	* [LEX](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#lex)
 		* [Lets Begin](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#lets-begin)
@@ -39,7 +39,7 @@ Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop
 
 #### Create .l file
 
-*This file holds the regular expressions used to recogonize the patterns from the .y file*
+*This file holds the regular expressions used to recognize the patterns from the .y file*
 
 ```
 fileName.l
@@ -47,12 +47,12 @@ fileName.l
 
 #### Create .y file
 
-*This file contains the context free grammer (CFG)*
+*This file contains the context free grammar (CFG)*
 
 ```
 fileName.y
 ```
-Note: The term "lexum" represents the grammer such as *varName,* and the term token represents the catagory such as *ID*
+Note: The term "lexum" represents the grammar such as *varName,* and the term token represents the category such as *ID*
 
 #### Create .tab.c file
 
@@ -68,9 +68,9 @@ fileName.tab.c
 
 ### YACC
 
-Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y). Watch an example with this YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
+Find the given grammar [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y). Watch an example with this YouTube video [here](https://www.YouTube.com/watch?v=ueZ9LX1xItQ).
 
-#### *Given Grammer*
+#### *Given grammar*
 
 ```
 start 
@@ -126,7 +126,7 @@ relation
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
-#### *Eggen's Grammer Reference*
+#### *Eggen's grammar Reference*
 
 ```
 %{
@@ -351,11 +351,11 @@ yywrap()
 
 ### LEX
 
-Using extended **regular expression** format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw). You can also find a good video about **FLEX** [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
+Using extended **regular expression** format, build out the lexical analyzer. Find a good reference website [here](https://regexr.com/) **or** watch these YouTube videos, [part1](https://www.YouTube.com/watch?v=7DG3kCDx53c) and [part2](https://www.YouTube.com/watch?v=YTocEnDsMNw). You can also find a good video about **FLEX** [here](https://www.YouTube.com/watch?v=pu0hX5lftQU).
 
 #### Lets begin
 
-Reference Eggen's world famous grammer [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
+Reference Eggen's world famous grammar [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
 
 ```
 %{
@@ -522,7 +522,7 @@ WhiteSpace   	{Delimiter}+
 
 #### Part Four
 
-Understanding the sections is key to making a functioning LEX. Know that there are three sections, each split by `%%`. To get more information, watch this YouTube video [here](https://www.youtube.com/watch?v=pu0hX5lftQU).
+Understanding the sections is key to making a functioning LEX. Know that there are three sections, each split by `%%`. To get more information, watch this YouTube video [here](https://www.YouTube.com/watch?v=pu0hX5lftQU).
 
 ```
 	-== Section One ==-
@@ -530,7 +530,7 @@ Understanding the sections is key to making a functioning LEX. Know that there a
 // C language code goes here
 #include "fileName.tab.h"
 extern int yylval;
-void someFunction(); // funciton header
+void someFunction(); // function header
 int numVar; // there is no point to this variable, it is just an example
 %}
 
@@ -574,7 +574,7 @@ numVar = 5; // there is no point to this variable, it is just an example
 
 #### Part Five
 
-Now that the .l file is done, we need to update section one and two of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Section two needs the tokens to be updated. Find a reference YouTube video [here](https://www.youtube.com/watch?v=ueZ9LX1xItQ).
+Now that the .l file is done, we need to update section one and two of the .y file. Since we are passing tokens to the .y file, section one needs to reflect those tokens being passed. Section two needs the tokens to be updated. Find a reference YouTube video [here](https://www.YouTube.com/watch?v=ueZ9LX1xItQ).
 
 ##### Section One Update
 
@@ -641,7 +641,7 @@ projection                  : term                                      {
 
 ### Make .tab.c file
 
-This file is used to put the tokens into the symbol table, so that GDB and other debuggers know about them.You can find Eggen's file reference [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.h). We only care about changing the tokens to look like the following:
+This file is used to put the tokens into the symbol table, so that GDB and other debuggers know about them. You can find Eggen's file reference [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.h). We only care about changing the tokens to look like the following:
 
 ```
 /* Tokens.  */
@@ -711,13 +711,13 @@ lex.yy.c: fileName.l fileName.tab.c
 
 ## **Step Four** [Make typescript file]
 
-A typescript file is used to log what is printed to the terminal. In order to start the typescript, you must be on a linux machine and use the following command:
+A typescript file is used to log what is printed to the terminal. In order to start the typescript, you must be on a Linux machine and use the following command:
 
 ```
 script
 ```
 
-You will now see a typescript file created in yout current directory. The next step is to execute the programs for this project. In order to end the typescript, use the following command:
+You will now see a typescript file created in your current directory. The next step is to execute the programs for this project. In order to end the typescript, use the following command:
 
 ```
 exit
@@ -831,7 +831,7 @@ p3.y:55.29: syntax error, unexpected |
 make: *** [pull.tab.c] Error 1
 ```
 
-This is the place in the code it was refereing to in my p3.y file:
+This is the place in the code it was refereeing to in my p3.y file:
 
 ```
 %%
@@ -846,7 +846,7 @@ expression                  : one-relation-expression                   {
                                                                         };
 ```
 
-> To resolve the issue, the '-' character needed to be removed. This is the exact grammer that was given to use. Therefor, many people may have this issue.
+> To resolve the issue, the '-' character needed to be removed. This is the exact grammar that was given to use. Therefor, many people may have this issue.
 
 My fix:
 
