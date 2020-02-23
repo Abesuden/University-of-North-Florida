@@ -46,8 +46,15 @@ fileName.l
 ```
 fileName.y
 ```
-
 Note: The term "lexum" represents the grammer such as *varName,* and the term token represents the catagory such as *ID*
+
+#### Create .tab.c file
+
+*This file is used to put the tokens into a symbol table, so that the GDB and other debuggers know about them.*
+
+```
+fileName.tab.c
+```
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
@@ -637,14 +644,20 @@ nano makefile
 Type something similar to the following:
 
 ```
-postfix: lex.yy.c postfix.tab.c
-        cc postfix.tab.c -o postfix
+fileName:  fileName.tab.o lex.yy.o 
+	cc -o fileName lex.yy.o fileName.tab.o 
 
-lex.yy.c: postfix.l
-        flex postfix.l
+fileName.tab.o: fileName.tab.c
+	cc -c fileName.tab.c
 
-postfix.tab.c   : postfix.y
-        bison postfix.y
+fileName.tab.c: fileName.y
+	bison -d fileName.y
+
+lex.yy.o: lex.yy.c fileName.tab.h
+	cc -c lex.yy.c
+
+lex.yy.c: fileName.l fileName.tab.c
+	flex fileName.l
 ```
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
