@@ -23,47 +23,6 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 
 ## **Step Two** [Build out the files]
 
-### Lex
-
-Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
-
-#### Lets begin
-
-Reference Eggen's world famous grammer [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
-
-```
-%{
-#include "aa.tab.h"
-extern int yylval;
-%}
-Delimiter    [ \t]
-WhiteSpace   {Delimiter}+
-Letter       [A-Za-z]
-Digit        [0-9]
-%%
-{WhiteSpace}                  ;
-{Letter}({Letter}|{Digit})*   return(Id);
-{Digit}+                      {
-                              //printf("%s in lex\n",yytext);
-			      yylval = atoi(yytext);
-                              /* return(yytext); */
-                               return(Lt);   
-                              }
-"+"                           { //printf("%s in lex \n",yytext);
-                                return(Pl);
-                              }
-"-"                           return(St);
-"*"                           return(Mt);
-"/"                           return(Di);
-"="                           return(Eq);
-";"                           return(Sm);
-"("                           return(Lp);
-")"                           return(Rp);
-\n                            return(0);
-```
-
-
-
 ### Yacc
 
 Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y)
@@ -121,7 +80,6 @@ attribute
 
 relation 
 	::= S | P | SP | PRDCT | CUST | ORDERS
-
 ```
 
 *Eggen's Grammer Reference*
@@ -363,6 +321,103 @@ lex.yy.c: postfix.l
 postfix.tab.c   : postfix.y
         bison postfix.y
 ```
+
+### Lex
+
+Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
+
+#### Lets begin
+
+Reference Eggen's world famous grammer [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
+
+```
+%{
+#include "aa.tab.h"
+extern int yylval;
+%}
+Delimiter    [ \t]
+WhiteSpace   {Delimiter}+
+Letter       [A-Za-z]
+Digit        [0-9]
+%%
+{WhiteSpace}                  ;
+{Letter}({Letter}|{Digit})*   return(Id);
+{Digit}+                      {
+                              //printf("%s in lex\n",yytext);
+			      yylval = atoi(yytext);
+                              /* return(yytext); */
+                               return(Lt);   
+                              }
+"+"                           { //printf("%s in lex \n",yytext);
+                                return(Pl);
+                              }
+"-"                           return(St);
+"*"                           return(Mt);
+"/"                           return(Di);
+"="                           return(Eq);
+";"                           return(Sm);
+"("                           return(Lp);
+")"                           return(Rp);
+\n                            return(0);
+%%
+```
+
+Now, lets find what regular expressions we want to look for. Lets reference the earlier CFG and find the desired tokens (**I have bolded them**). To understand, what qualifies as a token, we need to know the following:
+ * keywords in SQL are all UPPERCASE
+ * what are the special characters in the CFG (*i.e. '(', '\[', '{', ect.*)
+ * are there identifiers
+ 
+ ```
+start 
+	::= expression
+
+expression
+	::= one-relation-expression | two-relation-expression
+
+one-relation-expression
+	::= renaming | restriction | projection
+
+renaming 
+	::= term RENAME attribute AS attribute
+
+term 
+	::= relation | ( expression )
+
+restriction
+	::= term WHERE comparison
+
+projection 
+	::= term | term [ attribute-commalist ]
+
+attribute-commalist
+	::= attribute | attribute , attribute-commalist
+
+two-relation-expression
+	::= projection binary-operation expression
+
+binary-operation
+	::= UNION | INTERSECT | MINUS | TIMES | JOIN | DIVIDEBY
+
+comparison
+	::= attribute compare number
+
+compare
+	::= < | > | <= | >= | = | <>
+
+number
+	::= val | val number
+
+val 
+	::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+attribute 
+	::= CNO | CITY | CNAME | SNO | PNO | TQTY | 
+		  SNAME | QUOTA | PNAME | COST | AVQTY |
+		  S# | STATUS | P# | COLOR | WEIGHT | QTY
+
+relation 
+	::= S | P | SP | PRDCT | CUST | ORDERS
+ ```
 
 ## **Step Four** [Make typescript file]
 
