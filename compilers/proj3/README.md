@@ -7,7 +7,7 @@
 * [Step One [Create Files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-one-create-files)
 	* [Create .l file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-l-file)
 	* [Create .y file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-y-file)
-	* [Create .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file)
+	* [Create .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabh-file)
 * [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
 	* [YACC](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)
 		* [Given grammar](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#given-grammar)
@@ -22,7 +22,7 @@
 		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
 			* [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update)
 			* [Section Two Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-two-update)
-	* [Build .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#build-tabc-file)
+	* [Build .tab.h file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#build-tabh-file)
 * [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
@@ -875,7 +875,7 @@ cc: no input files
 make: *** [pull.tab.o] Error 1
 ```
 
-> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens like in this step [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#build-tabc-file). I also had to find all references to `aa.tab.c` using `ctrl + f`, and replace all to my `fileName.tab.c`. It resolved the issue and I was able to get passed the `.y` file errors.
+> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens like in this step [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#build-tabh-file). I also had to find all references to `aa.tab.c` using `ctrl + f`, and replace all to my `fileName.tab.c`. It resolved the issue and I was able to get passed the `.y` file errors.
 
 ---
 
