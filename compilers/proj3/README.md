@@ -373,7 +373,7 @@ Input Files Expected
 
 Output Created
 ==============
-	Output will be printed to the screen. Later, output will be printed to a file to be passed to project 2's parcer.
+	Output will be printed to the screen...
 
 Author
 ======
