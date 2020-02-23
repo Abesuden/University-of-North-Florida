@@ -7,8 +7,6 @@ Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop
 
 *This file holds the regular expressions used to recogonize the patterns from the .y file*
 
-═╩
-
 ```
 fileName.l
 ```
@@ -384,13 +382,13 @@ renaming
 >   ::= term **RENAME** attribute **AS** attribute
 
 term 
->   ::= relation | **(** expression **)**
+>   ::= relation | ***(*** expression ***)***
 
 restriction
 >   ::= term **WHERE** comparison
 
 projection 
->   ::= term | term **[** attribute-commalist **]**
+>   ::= term | term ***[*** attribute-commalist ***]***
 
 attribute-commalist
 >   ::= attribute | attribute **,** attribute-commalist
@@ -405,7 +403,7 @@ comparison
 >   ::= attribute compare number
 
 compare
->   ::= **<** | **>** | **<=** | **>=** | **=** | **<>**
+>   ::= ***<*** | ***>*** | ***<=*** | ***>=*** | ***=*** | ***<>***
 
 number
 >   ::= val | val number
@@ -422,6 +420,51 @@ relation
 >   ::= **S** | **P** | **SP** | **PRDCT** | **CUST** | **ORDERS**
 
 ---
+
+So we find that we need regular expressions to find:
+ * RENAME
+ * AS
+ * (
+ * )
+ * WHERE
+ * [
+ * ]
+ * UNION
+ * INTERSECTION
+ * MINUS
+ * TIMES
+ * JOIN
+ * DIVIDBY
+ * <
+ * \>
+ * <=
+ * \>=
+ * =
+ * <>
+ * 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+ * CNO
+ * CITY
+ * CNAME
+ * SNO
+ * PNO
+ * TQTY
+ * SNAME
+ * QUOTA
+ * PNAME
+ * COST
+ * AVQTY
+ * S#
+ * STATUS
+ * P#
+ * COLOR
+ * WEIGHT
+ * QTY
+ * S
+ * P
+ * SP
+ * PRDCT
+ * CUST
+ * ORDERS
 
 ## **Step Four** [Make typescript file]
 
