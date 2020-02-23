@@ -23,9 +23,11 @@ Note: The term "lexum" represents the grammer such as *varName,* and the term to
 
 ## **Step Two** [Build out the files]
 
-#### Lex
+### Lex
 
 Using extended regular expression format, build out the lexical analyser. Find a good reference website [here](https://regexr.com/) **or** watch these youtube videos, [part1](https://www.youtube.com/watch?v=7DG3kCDx53c) and [part2](https://www.youtube.com/watch?v=YTocEnDsMNw).
+
+#### Lets begin
 
 Reference Eggen's world famous grammer [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.l)
 
@@ -61,7 +63,8 @@ Digit        [0-9]
 ```
 
 
-#### Yacc
+
+### Yacc
 
 Find the given grammer [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3) and use Eggen's reference example [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.y)
 
