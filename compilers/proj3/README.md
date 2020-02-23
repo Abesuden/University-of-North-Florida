@@ -6,13 +6,20 @@
 	* [Create .l file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-l-file)
 	* [Create .y file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-y-file)
 * [Step Two [Build out the files]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-two-build-out-the-files)
-	* [YACC]()
-	* [ds]()
+	* [YACC](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#yacc)
+	* [LEX](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#lex)
+		* [Lets Begin](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#lets-begin)
+		* [Part One](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-one)
+		* [Part Two](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-two)
+		* [Part Three](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-three)
+		* [Part Four](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-four)
+		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
+* [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
+* [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
+* [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
+* [Final Step [Turn in on osprey]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#final-step-turn-in-on-osprey)
 
-	
-* [sd]()
-	* [ds]()
-		* [sd]()
+---
 
 ## **Step One** [Create Files]
 Follow the steps below for project 3 found [here](https://www.unf.edu/public/cop4620/ree/Projects/prj3)
