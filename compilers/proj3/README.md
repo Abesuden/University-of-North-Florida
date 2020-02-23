@@ -371,72 +371,55 @@ Now, lets find what regular expressions we want to look for. Lets reference the 
 
 ---
 
-`start `
+start 
 >   ::= **expression**
 
-`expression`
+expression
+>   ::= one-relation-expression | two-relation-expression
 
-   ::= one-relation-expression | two-relation-expression
+one-relation-expression
+>   ::= renaming | restriction | projection
 
-`one-relation-expression`
-	
-   ::= renaming | restriction | projection
+renaming 
+>   ::= term **RENAME** attribute **AS** attribute
 
-`renaming `
-	
-   ::= term RENAME attribute AS attribute
+term 
+>   ::= relation | **(** expression **)**
 
-`term `
-	
-   ::= relation | **(** expression **)**
+restriction
+>   ::= term **WHERE** comparison
 
-`restriction`
-	
-   ::= term **WHERE** comparison
+projection 
+>   ::= term | term **[** attribute-commalist **]**
 
-`projection `
-	
-   ::= term | term **[** attribute-commalist **]**
+attribute-commalist
+>   ::= attribute | attribute **,** attribute-commalist
 
-`attribute-commalist`
-	
-   ::= attribute | attribute **,** attribute-commalist
+two-relation-expression
+>   ::= projection binary-operation expression
 
-`two-relation-expression`
-	
-   ::= projection binary-operation expression
+binary-operation
+>   ::= **UNION** | **INTERSECT** | **MINUS** | **TIMES** | **JOIN** | **DIVIDEBY**
 
-`binary-operation`
-	
-   ::= **UNION** | **INTERSECT** | **MINUS** | **TIMES** | **JOIN** | **DIVIDEBY**
+comparison
+>   ::= attribute compare number
 
-`comparison`
-	
-   ::= attribute compare number
+compare
+>   ::= **<** | **>** | **<=** | **>=** | **=** | **<>**
 
-`compare`
-	
-   ::= **<** | **>** | **<=** | **>=** | **=** | **<>**
+number
+>   ::= val | val number
 
-`number`
-	
-   ::= val | val number
+val 
+>   ::= **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9**
 
-`val `
-	
-   ::= **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9**
+attribute 
+>   ::= **CNO** | **CITY** | **CNAME** | **SNO** | **PNO** | **TQTY** | 
+>   **SNAME** | **QUOTA** | **PNAME** | **COST** | **AVQTY** |
+>   **S#** | **STATUS** | **P#** | **COLOR** | **WEIGHT** | **QTY**
 
-`attribute `
-	
-   ::= **CNO** | **CITY** | **CNAME** | **SNO** | **PNO** | **TQTY** | 
-		  
-   **SNAME** | **QUOTA** | **PNAME** | **COST** | **AVQTY** |
-		  
-   **S#** | **STATUS** | **P#** | **COLOR** | **WEIGHT** | **QTY**
-
-`relation `
-   
-   ::= **S** | **P** | **SP** | **PRDCT** | **CUST** | **ORDERS**
+relation 
+>   ::= **S** | **P** | **SP** | **PRDCT** | **CUST** | **ORDERS**
 
 ---
 
