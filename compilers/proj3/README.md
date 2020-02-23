@@ -318,7 +318,7 @@ create makefile or find Eggen's example [here](https://www.unf.edu/public/cop462
 nano makefile
 ```
 
-type something similar to the following:
+Type something similar to the following:
 
 ```
 postfix: lex.yy.c postfix.tab.c
@@ -333,12 +333,57 @@ postfix.tab.c   : postfix.y
 
 ## **Step Four** [Make typescript file]
 
+## **Step Five** [Create documentation]
 
+Eggen expects some form of documentation that describes what is being turned in
+
+```
+nano doc
+```
+
+*inside, make it look like a man page*
+
+```
+ Project 3
+
+Command Name
+============
+        p3 [fileName]
+
+
+Description
+===========
+        The quick brown fox jumped over the sleeping dog...
+
+
+How To Use
+==========
+        To invoke blah blah blah...
+
+
+Purpose
+=======
+        The purpose is...
+
+
+Input Files Expected
+====================
+        The command line argument expects a file as the first argument ("p3 fileName")
+
+
+Output Created
+==============
+	Output will be printed to the screen. Later, output will be printed to a file to be passed to project 2's parcer.
+
+Author
+======
+        firstName lastName [n00000000]
+```
 
 ## **Final Step** [Turn in on osprey]
 
 You will need to shar the files (compress)
 
 ```
-sh 
+shar fileName.l fileName.y typescript doc 
 ```
