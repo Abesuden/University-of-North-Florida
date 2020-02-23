@@ -22,7 +22,7 @@
 		* [Part Five](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#part-five)
 			* [Section One Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-one-update)
 			* [Section Two Update](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#section-two-update)
-	* [Create .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file-1)
+	* [Make .tab.c file](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#create-tabc-file-1)
 * [Step Three [Build makefile]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-three-build-makefile)
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
@@ -635,7 +635,7 @@ projection                  : term                                      {
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
-### Create .tab.c file
+### Make .tab.c file
 
 This file is used to put the tokens into the symbol table, so that GDB and other debuggers know about them.You can find Eggen's file reference [here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.h). We only care about changing the tokens to look like the following:
 
@@ -652,7 +652,7 @@ This file is used to put the tokens into the symbol table, so that GDB and other
        LSQR 	  = 261,
        RSQR 	  = 262,
        LRAB 	  = 263,
-	   ...
+       ...
        QTY    	  = 296,
        SP     	  = 297,
        PRDCT  	  = 298,
@@ -660,7 +660,7 @@ This file is used to put the tokens into the symbol table, so that GDB and other
        ORDERS 	  = 300,
        S          = 301,
        P          = 302,
-       DELIMITER  = 303
+       DELIMITER  = 303   <---- notice there is no comma on last number
    };
 #endif
 
@@ -785,5 +785,153 @@ turnin outfl ree4620_3   // final step to turn in project
 turnin -c ree4620_3 	 // used to check and make sure it was turned in
 ls -l outFile  	       	 // see that the file size turned in agrees with the local file size
 ```
+
+[**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
+## **Trouble Shooting**
+
+#### *make issue [alpha]*
+
+When using the `make` command, this is what my terminal spit out:
+
+```
+[n00850421@osprey proj3]$ make
+bison -d p3.y
+p3.y:17.34: invalid character: `-'
+p3.y:17.43: invalid character: `-'
+p3.y:19.34: invalid character: `-'
+p3.y:19.43: invalid character: `-'
+p3.y:21.1-3: syntax error, unexpected identifier
+p3.y:21.4: invalid character: `-'
+p3.y:21.13: invalid character: `-'
+p3.y:23.29: syntax error, unexpected |
+p3.y:25.29: syntax error, unexpected |
+p3.y:37.50: invalid character: `-'
+p3.y:39.1-9: syntax error, unexpected identifier
+p3.y:39.10: invalid character: `-'
+p3.y:41.29: syntax error, unexpected |
+p3.y:41.56: invalid character: `-'
+p3.y:43.1-3: syntax error, unexpected identifier
+p3.y:43.4: invalid character: `-'
+p3.y:43.13: invalid character: `-'
+p3.y:43.48: invalid character: `-'
+p3.y:45.1-6: syntax error, unexpected identifier
+p3.y:45.7: invalid character: `-'
+p3.y:47.29: syntax error, unexpected |
+p3.y:49.29: syntax error, unexpected |
+p3.y:51.29: syntax error, unexpected |
+p3.y:53.29: syntax error, unexpected |
+p3.y:55.29: syntax error, unexpected |
+make: *** [pull.tab.c] Error 1
+```
+
+This is the place in the code it was refereing to in my p3.y file:
+
+```
+%%
+start                       : expression                                {
+                            printf("\nACCEPT\n");
+                                                                        };
+expression                  : one-relation-expression                   {
+								 ^--here--^	
+								 	  `--> the issue is the '-' character is not accepted
+                                                                        };
+                            | two-relation-expression                   {
+                                                                        };
+```
+
+> To resolve the issue, the '-' character needed to be removed. This is the exact grammer that was given to use. Therefor, many people may have this issue.
+
+My fix:
+
+```
+%%
+start                       : expression                                {
+                            printf("\nACCEPT\n");
+                                                                        };
+expression                  : oneRelationExpression                     {
+                                                                        };
+                            | twoRelationExpression                     {
+                                                                        };
+```
+
+#### *make issue [beta]*
+
+When using the `make` command, this is what my terminal spit out:
+
+```
+bison -d p3.y
+cc -c pull.tab.c
+cc: pull.tab.c: No such file or directory
+cc: no input files
+make: *** [pull.tab.o] Error 1
+```
+
+> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens and file names. It resolved the issue and I was able to get passed the `.y` file.
+
+#### *make issue [theta]*
+
+When using the `make` command, this is what my terminal spit out:
+
+```
+cc -c pull.tab.c
+flex p3.l
+p3.l:31: warning, rule cannot be matched
+p3.l:32: warning, rule cannot be matched
+p3.l:33: warning, rule cannot be matched
+p3.l:34: warning, rule cannot be matched
+cc -c lex.yy.c
+cc -o p3 lex.yy.o pull.tab.o
+```
+
+This is in my `.l` file where my RE are defined:
+
+```
+	-== Section One ==-
+...
+lequal          [<=]
+gequal          [>=]
+lthen           [<]
+gthen           [>]
+equal           [=]
+comma			[,]
+...
+
+	-== Section Two ==-
+...
+{lequal}            {return(LEQUAL);}
+{gequal}            {return(GEQUAL);}
+{lthen}             {return(LTHEN);}
+{gthen}             {return(GTHEN);}
+{equal}             {return(EQUAL);}
+{comma}             {return(COMMA);}
+```
+
+This is the correction I made:
+
+```
+	-== Section One ==-
+...
+lequal          "<="
+gequal          ">="
+lthen           "<"
+gthen           ">"
+equal           "="
+comma           ","
+...
+
+	-== Section Two ==-
+...
+{lequal}            {return(LEQUAL);}
+{gequal}            {return(GEQUAL);}
+{lthen}             {return(LTHEN);}
+{gthen}             {return(GTHEN);}
+{equal}             {return(EQUAL);}
+{comma}             {return(COMMA);}
+...
+```
+
+> I found out that the way I look for RE is not correct. Instead of `[]`, I needed to use `""`.
+
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
