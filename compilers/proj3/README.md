@@ -1047,4 +1047,14 @@ Someone brought up an issue where there executable was only printing "inside yyw
 
 ## **Test Cases**
 
-I do not currently have any test cases for this project but [@jonathan-lemos](https://github.com/jonathan-lemos) has some good ones [here](https://github.com/jonathan-lemos/cm-test-cases/tree/master/lex_yacc).
+I do not currently have any test cases for this project but [@jonathan-lemos](https://github.com/jonathan-lemos) has some good ones [here](https://github.com/jonathan-lemos/cm-test-cases/tree/master/lex_yacc). This ACCEPTed for me:
+
+```
+PRDCT WHERE TQTY > 049
+```
+
+This REJECTed for me:
+
+```
+S RENAME ABC AS CITY
+```
