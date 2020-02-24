@@ -780,7 +780,7 @@ Author
 You will need to shar the files to compress them
 
 ```
-shar makefile fileName.l fileName.y typescript doc >> outFile
+shar makefile fileName.l fileName.y typescript doc > outFile
 ```
 
 Turn the compressed file into Eggen
