@@ -31,6 +31,7 @@
 	* [make issue [alpha]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-alpha)
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
+	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 ---
 
@@ -942,6 +943,21 @@ comma           ","
 ```
 
 > I found out that the way I look for RE is not correct. Instead of `[]`, I needed to use `""`.
+
+#### *Always REJECTing*
+
+I had the issue of my project always rejecting. The reason I found was because I was passing the RE for `delimiter` and `whitespace`, such as:
+
+```
+...
+%%
+{delimiter}         {return(DELIMITER);}	<---.
+{whitespace}        {return(WHITESPACE);}   <----`-----remove both these token passing lines
+{num}               {return(NUM);}
+...
+```
+
+> If you have these issues, remove the lines with the REs for `delimiter` and `whitespace` from your section two in your `.y` file. This actually fixed my p3 executable.
 
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
