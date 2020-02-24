@@ -31,7 +31,7 @@
 	* [make issue [alpha]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-alpha)
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
-
+* [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 ---
 
 ## **Step One** [Create Files]
@@ -846,7 +846,7 @@ expression                  : one-relation-expression                   {
                                                                         };
 ```
 
-> To resolve the issue, the '-' character needed to be removed. This is the exact grammar that was given to use. Therefor, many people may have this issue.
+> To resolve the issue, the '-' character needed to be removed. This is the exact grammar that was given to us. Therefor, many people may have this issue.
 
 My fix:
 
@@ -945,3 +945,9 @@ comma           ","
 
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
+
+---
+
+## **Test Cases**
+
+I do not currently have any test cases for this project but [@jonathan-lemos](https://github.com/jonathan-lemos) has some good ones [here](https://github.com/jonathan-lemos/cm-test-cases/tree/master/lex_yacc).
