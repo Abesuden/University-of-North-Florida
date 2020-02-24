@@ -32,6 +32,7 @@
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
+	* [Only Printing yywrap](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#only-printing-yywrap)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 
 ---
@@ -1035,6 +1036,10 @@ void rejectState () {
 This solution solved the issue!
 
 > **Theory** >> *when we add this rejectState() function, we exit and REJECT in the LEX before YACC is even invoked. Thus, YACC does not have a chance to print the rejected token.*
+
+#### *Only Printing yywrap*
+
+Someone brought up an issue where there executable was only printing "inside yywrap." The solution to this was to set up the `makefile` and then use the `make` command. This solved the issue.
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
