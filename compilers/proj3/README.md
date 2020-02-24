@@ -821,7 +821,7 @@ ls -l outFile  	       	 // see that the file size turned in agrees with the loc
 
 ---
 
-#### *make issue [alpha]*
+#### *Make issue [alpha]*
 
 When using the `make` command, this is what my terminal spit out:
 
@@ -888,7 +888,7 @@ expression                  : oneRelationExpression                     {
 
 ---
 
-#### *make issue [beta]*
+#### *Make issue [beta]*
 
 When using the `make` command, this is what my terminal spit out:
 
@@ -904,7 +904,7 @@ make: *** [pull.tab.o] Error 1
 
 ---
 
-#### *make issue [theta]*
+#### *Make issue [theta]*
 
 When using the `make` command, this is what my terminal spit out:
 
