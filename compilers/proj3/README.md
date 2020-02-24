@@ -33,6 +33,7 @@
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
+
 ---
 
 ## **Step One** [Create Files]
@@ -712,17 +713,39 @@ lex.yy.c: fileName.l fileName.tab.c
 
 ## **Step Four** [Make typescript file]
 
+Before a typescript is created, make sure you have everything set up.
+
+```
+shar fileName.l fileName.y makefile > outFile
+mkdir turninFolder
+cp outFile turninFolder
+cp testFileACCEPT turninFolder
+cp testFileREJECT turninFolder
+cd turninFolder
+```
+
+> Follow the above Linux commands to get the shar'ed files in the right location. You will want to
+
 A typescript file is used to log what is printed to the terminal. In order to start the typescript, you must be on a Linux machine and use the following command:
 
 ```
 script
 ```
 
-You will now see a typescript file created in your current directory. The next step is to execute the programs for this project. In order to end the typescript, use the following command:
+Follow the below commands to get output Eggen wants to see:
 
 ```
+sh outFile
+ls
+make
+cat testFileACCEPT
+./p3 testFileACCEPT
+cat testFileREJECT
+./p3 testFileREJECT
 exit
 ```
+
+A typescript file has been created in your current directory. You will need this typescript to turn into Eggen.
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
