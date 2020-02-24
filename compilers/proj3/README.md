@@ -27,7 +27,7 @@
 * [Step Four [Make typescript file]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-four-make-typescript-file)
 * [Step Five [Create documentation]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#step-five-create-documentation)
 * [Final Step [Turn in on osprey]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#final-step-turn-in-on-osprey)
-* [Troubleshooting](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#trouble-shooting)
+* [Troubleshooting](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#troubleshooting)
 	* [make issue [alpha]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-alpha)
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
@@ -959,6 +959,59 @@ I had the issue of my project always rejecting. The reason I found was because I
 
 > If you have these issues, remove the lines with the REs for `delimiter` and `whitespace` from your section two in your `.y` file. This actually fixed my p3 executable.
 
+#### *Avoid Printing Token When REJECT*
+
+One of my issues was that, when the language was REJECTed, the last token was printed. As seen below:
+
+```
+[n00850421@osprey sandbox]$ cat testREJECT
+S RENAME ABC AS CITY
+[n00850421@osprey sandbox]$ ./p3 testREJECT
+  ABC
+REJECT
+[n00850421@osprey sandbox]$
+```
+
+To fix this error, I added a function to my `.l` file. In the first section I added `void rejectState();`:
+```
+%{
+#include "p3.tab.h"
+extern int yylval;
+void rejectState(); // <--- added this line
+%}
+...
+```
+
+In section two I added:
+
+```
+...
+%%
+...
+"WEIGHT"	    {return(WEIGHT);}
+"QTY"		    {return(QTY);}
+"S#"		    {return(SSRP);}
+"P#"		    {return(PSRP);}
+\n		        {return(0);}
+.               {rejectState();}  <--- added this line
+%%
+...
+```
+
+> The `'.'` in RE represents "everything else," so we are saying to REJECT when the RE sees anything that is not expected.
+
+In section three I added:
+
+```
+void rejectState () {
+    printf("\nREJECT\n");
+    exit(0);
+}
+```
+
+This solution solved the issue!
+
+> **Theory** >> *when we add this rejectState() function, we exit and REJECT in the LEX before YACC is even invoked. Thus, YACC does not have a chance to print the rejected token.*
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
