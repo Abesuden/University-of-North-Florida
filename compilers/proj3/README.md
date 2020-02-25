@@ -32,6 +32,7 @@
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
+   * [Avoid Printing Token When REJECT](avoid-printing-token-when-reject)
 	* [Only Printing yywrap](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#only-printing-yywrap)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 
@@ -996,46 +997,17 @@ REJECT
 [n00850421@osprey sandbox]$
 ```
 
-To fix this error, I added a function to my `.l` file. In the first section I added `void rejectState();`:
+I emailed Dr. Eggen about this issue, he said:
 ```
-%{
-#include "p3.tab.h"
-extern int yylval;
-void rejectState(); // <--- added this line
-%}
-...
-```
+Hi Alex,
 
-In section two I added:
+It is OK to print the token on a separate line as you show.
 
-```
-...
-%%
-...
-"WEIGHT"	    {return(WEIGHT);}
-"QTY"		    {return(QTY);}
-"S#"		    {return(SSRP);}
-"P#"		    {return(PSRP);}
-\n		        {return(0);}
-.               {rejectState();}  <--- added this line
-%%
-...
+Best,
+Dr. Eggen
 ```
 
-> The `'.'` in RE represents "everything else," so we are saying to REJECT when the RE sees anything that is not expected.
-
-In section three I added:
-
-```
-void rejectState () {
-    printf("\nREJECT\n");
-    exit(0);
-}
-```
-
-This solution solved the issue!
-
-> **Theory** >> *when we add this rejectState() function, we exit and REJECT in the LEX before YACC is even invoked. Thus, YACC does not have a chance to print the rejected token.*
+> **Theory** >> *YACC is printing the rejected token.*
 
 #### *Only Printing yywrap*
 
