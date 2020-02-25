@@ -144,7 +144,6 @@ extern FILE *yyin;
 %token Id Lt Pl St Mt Di Eq Sm Lp Rp 
 %%
 Program    : Expression Sm          { 
-                                     printf("\nACCEPT\n");
                                     };
 Expression : Expression Pl Term     {
                                     };
@@ -171,6 +170,7 @@ int main(int argc, char *argv[])
       printf("no file\n");
       exit(0);
    }
+   printf("\nACCEPT\n");
    yyparse();
 }
 yyerror()
