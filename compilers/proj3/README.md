@@ -32,7 +32,7 @@
 	* [make issue [beta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-beta)
 	* [make issue [theta]](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#make-issue-thetas)
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
-   * [Avoid Printing Token When REJECT](avoid-printing-token-when-reject)
+   * [Avoid Printing Token When REJECT](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#avoid-printing-token-when-reject)
 	* [Only Printing yywrap](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#only-printing-yywrap)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 
