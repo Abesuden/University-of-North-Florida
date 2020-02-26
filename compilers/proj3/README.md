@@ -34,6 +34,7 @@
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
    * [Avoid Printing Token When REJECT](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#avoid-printing-token-when-reject)
 	* [Only Printing yywrap](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#only-printing-yywrap)
+   * [Error With Multiple Line File] (https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#error-with-multiple-line-file)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 
 ---
@@ -1012,6 +1013,10 @@ Dr. Eggen
 #### *Only Printing yywrap*
 
 Someone brought up an issue where there executable was only printing "inside yywrap." The solution to this was to set up the `makefile` and then use the `make` command. This solved the issue.
+
+#### *Error With Multiple Line File*
+
+Eggen said, "I will give you one SQL query per file, and all are only one line." Thus, you should not have to worry about multiple line issues.
 
 [**T^C**](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj3#lex-and-yacc-yet-another-compiler-compiler)
 
