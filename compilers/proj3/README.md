@@ -34,7 +34,7 @@
 	* [Always REJECTing](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#always-rejecting)
    * [Avoid Printing Token When REJECT](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#avoid-printing-token-when-reject)
 	* [Only Printing yywrap](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#only-printing-yywrap)
-   * [Error With Multiple Line File] (https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#error-with-multiple-line-file)
+   * [Error With Multiple Line File](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#error-with-multiple-line-file)
 * [Test Cases](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#test-cases)
 
 ---
@@ -902,7 +902,24 @@ cc: no input files
 make: *** [pull.tab.o] Error 1
 ```
 
-> I had to copy Eggen's aa.tab.c file ([here](https://www.unf.edu/public/cop4620/ree/Examples/LEXYACC_sample/WorldFamousGram/aa.tab.c)) and modify it to match my tokens like in this step [here](https://github.com/Abesuden/University-of-North-Florida/blob/master/compilers/proj3/README.md#build-tabh-file). I also had to find all references to `aa.tab.c` using `ctrl + f`, and replace all to my `fileName.tab.c`. It resolved the issue and I was able to get passed the `.y` file errors.
+> I stopped by Eggen's office and he said to edit my `makefile` so that all fileNames matched. For example:
+
+```
+project3:  project3.tab.o lex.yy.o 
+	cc -o project3 lex.yy.o project3.tab.o 
+
+project3.tab.o: project3.tab.c
+	cc -c project3.tab.c
+
+project3.tab.c: project3.y
+	bison -d project3.y
+
+lex.yy.o: lex.yy.c project3.tab.h
+	cc -c lex.yy.c
+
+lex.yy.c: project3.l project3.tab.c
+	flex project3.l
+```
 
 ---
 
