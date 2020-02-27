@@ -1031,6 +1031,17 @@ Dr. Eggen
 
 Someone brought up an issue where there executable was only printing "inside yywrap." The solution to this was to set up the `makefile` and then use the `make` command. This solved the issue.
 
+> Note: `yywrap` is called at the end of the executable file. Some people take advantage of the `yywrap()` funciton and print their `ACCEPT`.
+
+```
+yywrap()
+{
+//   printf("in yywarp\n");
+   printf("\nACCEPT\n");
+   exit(0);
+}
+```
+
 #### *Error With Multiple Line File*
 
 Eggen said, "I will give you one SQL query per file, and all are only one line." Thus, you should not have to worry about multiple line issues.
