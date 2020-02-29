@@ -2,8 +2,9 @@
 
 [![Progress](https://img.shields.io/badge/DocumentationProgress-2%25-1abc9c.svg)](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj4/README.md)
 
-## Reference Code
+I do not claim this documentation is accurate yet. This is currently initial work and thoughts.
 
+## Reference Code
 
 ```
 // void funcitons
@@ -58,17 +59,47 @@ void funTwo(int innerOne, int innerTwo) {
 int funThree() {
 
     // init vars
-    
+    int innerVarOne;
+    int innerVarTwo;
+    int innerVarThree;
+    int innerVarFour;
+    int innerReturnVar;
 
     // return
+    return innerReturnVar;
+
 }
 
 int funFour (int innerThree, int innerFour) {
 
     // init vars
+    int innerVarOne;
+    int innerVarTwo;
+    int innerReturnVar;
+
+    // var assignment
+    innerVarOne = innerVarTwo = 5;
+
+    // math
+    innerThree = innerVarOne + innerThree;
+    innerThree = innerVarTwo - 1 + innerFour;
+    innerReturnVar = innerThree + innerFour;
 
 
     // return
+    return innerReturnVar + 1;
+}
+
+int funFive (int innerFive) {
+
+    // init and assign temp var
+    int tempVar;
+    tempVar = funFour(5,4);     // type compare here
+
+    // return math
+    return innerFive + 6 / 4 - tempVar + 7 / tempVar;
+    // return (innerFive + 6 / 4 - tempVar + 7 / tempVar); // <----------------------------------- ?????? ---- () allowed by parser?
+
 }
 
 // main method
@@ -85,13 +116,18 @@ int main (void) {
     // fun calls
     funOne();
     funTwo(argOne, argTwo);
-    returnedOne = funThree();
-    returnedTwo = funFour(argOne, argTwo);
-    arrInOne[0] = funThree();
-    arrInTwo[0] = funFour(argOne, argTwo);
-
+    // returnedOne = funOne();                  // type compare here    <INT> vs <VOID>   <---- REJECT this line
+    // returnedTwo = funTwo(argOne, argTwo);    // type compare here    <INT> vs <VOID>   <---- REJECT this line
+    returnedOne = funThree();                   // type compare here    <INT> vs <INT>
+    returnedTwo = funFour(argOne, argTwo);      // type compare here    <INT> vs <INT>
+    returnedTwo = funFour(argOne, 4);           // type compare here    <INT> vs <INT>
+    arrInOne[0] = funThree();                   // type compare here    <INT> vs <INT>
+    arrInTwo[1] = funFour(argOne, argTwo);      // type compare here    <INT> vs <INT>
+    arrInTwo[2] = funFour(2, 3);                // type compare here    <INT> vs <INT>
 
     // return
     return 0;
 }
 ```
+
+> Type comparisions only need to happen when storing a value that is returned from a function. This is because, we can only initilize variables of type `int`.
