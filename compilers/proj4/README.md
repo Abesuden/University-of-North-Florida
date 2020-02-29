@@ -130,4 +130,4 @@ int main (void) {
 }
 ```
 
-> Type comparisions only need to happen when storing a value that is returned from a function. This is because, we can only initilize variables of type `int`.
+> Type comparisions only need to happen when storing a value that is returned from a function. This is because, we can return both `int` and `void` types from a funciton, while only being able to initilize variables as type `int`. So, we want to REJECT any cases where `varName = funReturnsVoid();`.
