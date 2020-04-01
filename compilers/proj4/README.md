@@ -7,126 +7,133 @@ I do not claim this documentation is accurate yet. This is currently initial wor
 ## Reference Code
 
 ```
-// void funcitons
-void funOne () {
-
-    // init of vars
-    int numOne;
-    int numTwo;
-    int numThree;
-    int arrOne[5];
-    
-    // assignements
-    numOne = 5;
-    numTwo = numOne + 1;
-    numOne = 0;
-    int arrTwo[numOne]; // <------------------------------------------ ??????????
-    numThree = arrTwo[0];
-    numThree = arrTwo[0] = numTwo;
-    numThree = arrTwo[0] + 1;
-    numThree = arrTwo[0] = numTwo + 1;
-    arrTwo[0] = numTwo;
-    arrTwo[0] = numThree = numTwo;
-    arrTwo[0] = numThree = numTwo + 1;
-    arrOne[0] = arrOne[1] = arrOne[2] = arrOne[3] = arrOne[4] = numOne;
-    arrOne[0] = arrOne[1] = arrOne[2] = arrOne[3] = arrOne[4] = arrTwo[0];
-    arrOne[0] = arrOne[1] = arrOne[2] = arrOne[3] = arrOne[4] = arrTwo[0] + 1;
-
-
-    /* does this make it past the parser <---------------------------- ??????????
-    arrTwo[0] = numThree - 1 = numTwo;
-    */
-
-    // math
-    numThree = 5 + 5;
-    numThree = 5 + 5 * 2 / 3;
-    numThree = 5 + numOne + 6 * arrOne[0] / 2;
+void funOne ( ) {
+int numOne ;
+int numTwo ;
+int numThree ;
+1 + 1 ;
+int position ;
+int arrOne [ 5 ] ;
+int arrTwo [ 5 ] ;
+numOne = 5 ;
+numTwo = numOne + 1 ;
+numOne = 0 ;
+position = 0 ;
+numThree = arrTwo [ 0 ] ;
+numThree = arrTwo [ 0 ] = numTwo ;
+numThree = arrTwo [ 0 ] + 1 ;
+numThree = arrTwo [ 0 ] = numTwo + 1 ;
+arrTwo [ 0 ] = numTwo ;
+arrTwo [ 0 ] = numThree = numTwo ;
+arrTwo [ 0 ] = numThree = numTwo + 14 ;
+arrOne [ 0 ] = arrOne [ 1 ] = arrOne [ 2 ] = arrOne [ 3 ] = arrOne [ 4 ] = numOne ;
+arrOne [ 0 ] = arrOne [ 1 ] = arrOne [ 2 ] = arrOne [ 3 ] = arrOne [ 4 ] = arrTwo [ 0 ] ;
+arrOne [ 0 ] = arrOne [ 1 ] = arrOne [ 2 ] = arrOne [ 3 ] = arrOne [ 4 ] = arrTwo [ 0 ] + 1 ;
+1 + 1 ;
+numThree + numThree ;
+numThree = 5 + 5 ;
+numThree = 5 + 5 * 2 / 3 ;
+numThree = 5 + numOne + 6 * arrOne [ 0 ] / 2 ;
 
 }
-
-void funTwo(int innerOne, int innerTwo) {
-
-    // var assignments
-    innerOne = innerOne + 5;
-    innerTwo = innerOne;
-    
-    // fun calls
-    funOne();
+void funTwo ( int innerOne , int innerTwo ) {
+innerOne = innerOne + 5 ;
+innerTwo = innerOne ;
+funOne ( ) ;
 
 }
-
-// return functions
-int funThree() {
-
-    // init vars
-    int innerVarOne;
-    int innerVarTwo;
-    int innerVarThree;
-    int innerVarFour;
-    int innerReturnVar;
-
-    // return
-    return innerReturnVar;
+void funSix ( ) {
 
 }
-
-int funFour (int innerThree, int innerFour) {
-
-    // init vars
-    int innerVarOne;
-    int innerVarTwo;
-    int innerReturnVar;
-
-    // var assignment
-    innerVarOne = innerVarTwo = 5;
-
-    // math
-    innerThree = innerVarOne + innerThree;
-    innerThree = innerVarTwo - 1 + innerFour;
-    innerReturnVar = innerThree + innerFour;
-
-
-    // return
-    return innerReturnVar + 1;
+int funThree ( ) {
+int innerVarOne ;
+int innerVarTwo ;
+int innerVarThree ;
+int innerVarFour ;
+int innerReturnVar ;
+{
+int innerVarThree ;
 }
-
-int funFive (int innerFive) {
-
-    // init and assign temp var
-    int tempVar;
-    tempVar = funFour(5,4);     // type compare here
-
-    // return math
-    return innerFive + 6 / 4 - tempVar + 7 / tempVar;
-    // return (innerFive + 6 / 4 - tempVar + 7 / tempVar); // <----------------------------------- ?????? ---- () allowed by parser?
+return innerReturnVar ;
 
 }
+int funFour ( int innerThree , int innerFour ) {
+int innerVarOne ;
+int innerVarTwo ;
+int innerReturnVar ;
+innerVarOne = innerVarTwo = 5 ;
+innerThree = innerVarOne + innerThree ;
+innerThree = innerVarTwo - 1 + innerFour ;
+innerReturnVar = innerThree + innerFour ;
+return innerReturnVar + 1 ;
 
-// main method
-int main (void) {
+}
+int funFive ( int innerFive ) {
+int tempVar ;
+tempVar = funFour ( 5 , 4 ) ;
+return innerFive + 6 / 4 - tempVar + 7 / tempVar ;
 
-    // init of vars
-    int returnedOne;
-    int returnedTwo;
-    int argOne;
-    int argTwo;
-    int arrInOne[1];
-    int arrInTwo[1];
+}
+int main ( void ) {
+int returnedOne ;
+int returnedTwo ;
+int argOne ;
+int argTwo ;
+int arrInOne [ 1 ] ;
+int arrInTwo [ 1 ] ;
+funOne ( ) ;
+funTwo ( argOne , argTwo ) ;
 
-    // fun calls
-    funOne();
-    funTwo(argOne, argTwo);
-    // returnedOne = funOne();                  // type compare here    <INT> vs <VOID>   <---- REJECT this line
-    // returnedTwo = funTwo(argOne, argTwo);    // type compare here    <INT> vs <VOID>   <---- REJECT this line
-    returnedOne = funThree();                   // type compare here    <INT> vs <INT>
-    returnedTwo = funFour(argOne, argTwo);      // type compare here    <INT> vs <INT>
-    returnedTwo = funFour(argOne, 4);           // type compare here    <INT> vs <INT>
-    arrInOne[0] = funThree();                   // type compare here    <INT> vs <INT>
-    arrInTwo[1] = funFour(argOne, argTwo);      // type compare here    <INT> vs <INT>
-    arrInTwo[2] = funFour(2, 3);                // type compare here    <INT> vs <INT>
+returnedOne = funThree ( ) ;
+returnedTwo = funFour ( argOne , argTwo ) ;
+returnedTwo = funFour ( argOne , 4 ) ;
+arrInOne [ 0 ] = funThree ( ) ;
+arrInTwo [ 1 ] = funFour ( argOne , argTwo ) ;
+arrInTwo [ 2 ] = funFour ( 2 , 3 ) ;
+{
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
 
-    // return
-    return 0;
+}
+while ( 3 < 5 ) {
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
+
+}
+if ( 7 == 9 ) {
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
+
+}
+else {
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
+
+}
+if ( 1 ) {
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
+
+}
+else {
+int localScope ;
+localScope = 8 ;
+localScope = returnedOne + returnedTwo ;
+localScope = 5 + arrInOne [ 0 ] ;
+
+}
+return 0 ;
+
 }
 ```
 
