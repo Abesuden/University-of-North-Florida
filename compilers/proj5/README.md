@@ -176,7 +176,7 @@ The quadruples:
  - Assume all integers are 4 bytes big
  - bpw, bpo and bpe are set to the value of which line they are on in the array
  - you can find a demo python program [here](https://www.unf.edu/public/cop4620/ree/Examples/myparserdemo/justcodegen.py)
-    * use the `cod out*` files with this demo in this directory [here](https://www.unf.edu/public/cop4620/ree/Examples/myparserdemo/)
+    * use the code `out*` files with this demo in this directory [here](https://www.unf.edu/public/cop4620/ree/Examples/myparserdemo/)
 
  ## On Quiz
 
