@@ -2,6 +2,11 @@
 
 [![Progress](https://img.shields.io/badge/DocumentationProgress-45%25-1abc9c.svg)](https://github.com/Abesuden/University-of-North-Florida/tree/master/compilers/proj5/README.md)
 
+```
+“All tests given to test project 5 will be lexically, syntactically and semantically correct.” – Dr. Eggen
+“You do not need any code from project 4 in project 5 if you do not want to include it. Project 4 and 5 are independent of each other.” – Dr. Eggen
+```
+
 You can see Dr. Eggens code examples [here](https://www.unf.edu/public/cop4620/ree/Projects/prj5)
 
 ## Example 1
