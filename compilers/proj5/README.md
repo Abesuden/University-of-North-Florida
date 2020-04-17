@@ -125,8 +125,8 @@ The quadruples:
 
 ```
 1 func  main    void    0
-2 alloc 40      x           // notice that thw size is 4 * the array size
-3 alloc 4       y
+2 alloc 40              x           // notice that thw size is 4 * the array size
+3 alloc 4               y
 4 disp  x       20      _t0 // need to calculate displacement off of x b/c array size?
 5 add   _t0     2       _t1
 6 mult  _t1     y       _t2
